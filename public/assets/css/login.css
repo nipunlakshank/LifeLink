@@ -343,7 +343,7 @@ i {
   opacity: 0.3;
 }
 
-.box-login:focus .logo {
+.box:has(:where(.box-login:focus-within, .box-register:focus-within)) .logo {
     filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 50%));
 }
 
