@@ -25,13 +25,6 @@ function open_search() {
   mob_search.classList.toggle("d-none");
 }
 
-function see_more() {
-  document.getElementById("see_all").classList.toggle("disc");
-  document.getElementById("see_all").classList.toggle("disc2");
-  document.getElementById("show_more").classList.toggle("d-none");
-  document.getElementById("show_less").classList.toggle("d-none");
-}
-
 function open_edit1() {
   var update_icon = document.getElementById("update_icon1");
   var edit_icn = document.getElementById("edit_icn1");
@@ -49,4 +42,18 @@ function name_edit1() {
 function open_log_out() {
   var log_out_div = document.getElementById("log_out_div");
   log_out_div.classList.toggle("d-none");
+}
+function open_chat() {
+  var chat_div = document.getElementById("chat_div");
+  chat_div.classList.toggle("d-none");
+}
+
+function see_more_post() {
+  document.getElementById("see_all_post").classList.toggle("disc3");
+  document.getElementById("see_all_post1").classList.toggle("d-none");
+}
+
+function name_edit2() {
+  var bio_edit = document.getElementById("bio_edit");
+  bio_edit.classList.toggle("d-none");
 }

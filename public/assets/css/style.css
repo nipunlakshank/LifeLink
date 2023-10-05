@@ -32,6 +32,18 @@
     text-decoration: underline;
 }
 
+.disc1 {
+    max-height: 67px;
+    overflow: hidden;
+    transition: max-height .7s ease-in-out;
+}
+
+.disc3 {
+    max-height: 400px;
+    overflow-y: scroll;
+    transition: max-height .7s ease-in-out;
+}
+
 @media (max-width: 700px) {
     .flex_lg {
         display: none;
