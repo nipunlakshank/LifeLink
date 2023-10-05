@@ -72,7 +72,10 @@
                 <div class="col-md-9 col-lg-8">
                     <div class="border border-1 shadow shadow-sm rounded-3 mb-4">
                         <div class="p-3 position-relative">
-                            <textarea class="form-control" oninput="newPostEditing()" placeholder="Start a post" id="post-form-content" cols="30" rows="6" style="outline: none;"></textarea>
+
+                            <div id="editor" class="rounded-bottom">
+                            </div>
+                            <!-- <textarea class="form-control" placeholder="Start a post" name="" id="" cols="30" rows="6" style="outline: none;"></textarea> -->
                             <div class="mt-3 w-100">
                                 <div class="row">
                                     <div class="col-lg-4 row mb-4">
@@ -120,15 +123,39 @@
                                     </div>
                                     <p class="m-0 opacity-75" style="font-size: 12px;"><?= $post->time_diff ?></p>
                                 </div>
-                                <div class="position-relative mt-2 disc1" style="font-size: 14px;" id="see_all_post-<?= $post->id ?>">
-                                    <?= $post->description ?>
-                                    <span onclick="see_more_post(<?= $post->id ?>);" class=" pointer position-absolute " id="see_all_post1-<?= $post->id ?>" style="right: 0; bottom: 5px;  background-color: #FFFFFF; color: #378FE9; ">...see more</span>
+
+                                <div class="text-end">
+                                    <span class="pointer" style="font-size: 12px;"><i class="fa-regular fa-pen-to-square pe-1"></i>Edit</span>
+                                    <p class="m-0 opacity-75" style="font-size: 12px;">2 days ago</p>
                                 </div>
-                                <!-- <div class="mt-2" style="font-size: 14px;">
+                            </div>
+                            <div class="position-relative mt-2 disc1" style="font-size: 14px;" id="see_all_post">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent metus quam, faucibus id pulvinar et, placerat ac urna. Donec laoreet mollis lacus, sed dignissim nulla mollis a. Quisque tempor fermentum massa, at porta nibh vulputate at. Phasellus placerat, quam eget fringilla sodales, leo sem accumsan metus, a scelerisque ante metus et odio. Maecenas consectetur ipsum tortor, et rhoncus eros maximus eu. Fusce luctus neque ac ipsum porttitor faucibus. Nullam eget mauris ligula. Curabitur iaculis commodo libero at ultrices. Proin at libero enim. Cras ac libero a libero consequat porttitor sit amet a metus. Curabitur in sodales diam. Etiam dictum efficitur arcu sed interdum. Suspendisse in tellus quis tortor congue lobortis quis at lectus. Aenean aliquam a tellus nec luctus. Fusce faucibus finibus enim, vel convallis est finibus et.
+                                <span onclick="see_more_post();" class=" pointer position-absolute " id="see_all_post1" style="right: 0; bottom: 5px;  background-color: #FFFFFF; color: #378FE9; ">...see more</span>
+                            </div>
+                            <!-- <div class="mt-2" style="font-size: 14px;">
                                 For decades, math has been widely cited as Americans' least favorite subject, and algebra is the most frequently failed high school course in the country. But perhaps the problem isn’t that students can’t keep up with what they learn
                             </div> -->
-                                <div class="col-12 position-relative mt-2" style="height: auto;">
-                                    <img src="https://img.freepik.com/free-photo/woman-sitting-grass-checking-her-phone_23-2148739296.jpg" alt="" style="width: 100%;">
+                            <div class="col-12 position-relative mt-2" style="height: auto;">
+                                <img src="https://img.freepik.com/free-photo/woman-sitting-grass-checking-her-phone_23-2148739296.jpg" alt="" style="width: 100%;">
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="ji-center">
+                                    <p class="me-4 m-0 ji-center pointer" style="font-size: 20px;">
+                                        <!-- <i class="opacity-50 fa-solid fa-thumbs-up pe-2"></i> -->
+                                        <i class="fa-solid fa-thumbs-up pe-2" style="color: #378FE9;"></i>
+                                        <span class="flex_lg" style="font-size: 13px;">Upvote</span>
+                                    </p>
+                                    <p class="me-4 m-0 ji-center pointer" style="font-size: 20px;">
+                                        <!-- <i class="opacity-50 fa-solid fa-thumbs-up fa-rotate-180 ps-2"></i> -->
+                                        <i class="fa-solid fa-thumbs-up fa-rotate-180 ps-2" style="color: #ff906c;"></i>
+                                        <span class="flex_lg" style="font-size: 13px;">Downvote</span>
+                                    </p>
+                                    <p onclick="open_chat();" class="me-4 m-0 ji-center pointer" style="font-size: 20px;"><i class="opacity-50 fa-solid fa-message pe-2"></i><span class="flex_lg" style="font-size: 13px;">Comment</span></p>
+                                </div>
+                                <div class="">
+                                    <span class="opacity-75 pe-3" style="font-size: 13px;">7 upvote</span>
+                                    <span class="opacity-75" style="font-size: 13px;">3 downvote</span>
                                 </div>
                                 <hr>
                                 <div class="d-flex justify-content-between align-items-center">
@@ -158,12 +185,18 @@
                                     </div>
                                     <div class="position-relative" id="cardContainer">
 
-                                        <?php foreach ($post->comments ?? [] as $comment) : ?>
-                                            <div class="card_div">
-                                                <div class="border-bottom mt-4 d-flex">
-                                                    <div class="col-lg-1 col-md-1 col-sm-2">
-                                                        <div class="rounded-circle ji-centered" style="background-image: url(<?= PUBLIC_ROOT ?>/assets/images/users/<?= $comment->img ?>); background-size: cover; width: 40px; height: 40px; background-color: #ff7300; cursor: pointer;">
-                                                            <!-- <h5 class="fw-bold mt-2 text-light">K</h5> -->
+
+                                        <div class="card_div">
+                                            <div class="border-bottom mt-4 d-flex">
+                                                <div class="col-lg-1 col-md-1 col-sm-2">
+                                                    <div class="rounded-circle ji-centered" style="background-image: url(https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_small/v1/attachments/profile/photo/ecb924c7b3195c692127557f2c6385c8-638721441668843162.71172/6B4F23C6-F02D-4CCF-95A4-E8796DD1AF10); background-size: cover; width: 40px; height: 40px; background-color: #ff7300; cursor: pointer;">
+                                                    </div>
+                                                </div>
+                                                <div class="ps-1 col-lg-11 col-md-11 col-sm-10">
+                                                    <div class="p-3 pt-2 pb-2 mb-3" style="background-color: #f2f2f2; border-radius: 0 9px 9px 9px;">
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <p class="fw-bold opacity-75 m-0" style="font-size: 15px;">Bryan D.</p>
+                                                            <p class="opacity-75 m-0" style="font-size: 11px;">11 JUL 2023</p>
                                                         </div>
                                                     </div>
                                                     <div class="ps-1 col-lg-11 col-md-11 col-sm-10">

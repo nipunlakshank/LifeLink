@@ -87,3 +87,4 @@ async function addNewPost(){
 }
 
 formSubmit.addEventListener('click', () => addNewPost())
+
