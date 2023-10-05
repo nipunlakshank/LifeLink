@@ -1,95 +1,140 @@
 const ROOT = "http://localhost/lifelink";
 
 async function postData(endPoint, body) {
-    return await fetch(getUrl(endPoint), {
-        method: "post",
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-        },
-        body: JSON.stringify(body),
-    })
-        .then((res) => res.json())
-        .catch((e) => console.error(e));
+  return await fetch(getUrl(endPoint), {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(body),
+  })
+    .then((res) => res.json())
+    .catch((e) => console.error(e));
 }
 
 function getUrl(endPoint) {
-    return `${ROOT}${endPoint}`;
+  return `${ROOT}${endPoint}`;
 }
 
 // __________________________kosala_______________________________________
 
 function open_search() {
-    const mob_search = document.getElementById("mob_search");
+  const mob_search = document.getElementById("mob_search");
 
-    mob_search.classList.toggle("d-none");
+  mob_search.classList.toggle("d-none");
 }
 
 function open_edit1() {
-    const update_icon = document.getElementById("update_icon1");
-    const edit_icn = document.getElementById("edit_icn1");
-    const inputElement = document.getElementById("mobile");
+  const update_icon = document.getElementById("update_icon1");
+  const edit_icn = document.getElementById("edit_icn1");
+  const inputElement = document.getElementById("mobile");
 
-    update_icon.classList.remove("d-none");
-    edit_icn.classList.add("d-none");
-    inputElement.removeAttribute("readonly");
-    inputElement.focus();
+  update_icon.classList.remove("d-none");
+  edit_icn.classList.add("d-none");
+  inputElement.removeAttribute("readonly");
+  inputElement.focus();
 }
 function name_edit1() {
-    const name_edit = document.getElementById("name_edit");
-    name_edit.classList.toggle("d-none");
+  const name_edit = document.getElementById("name_edit");
+  name_edit.classList.toggle("d-none");
 }
 function open_log_out() {
-    const log_out_div = document.getElementById("log_out_div");
-    log_out_div.classList.toggle("d-none");
+  const log_out_div = document.getElementById("log_out_div");
+  log_out_div.classList.toggle("d-none");
 }
 function open_chat(id) {
-    const chat_div = document.getElementById(`chat_div-${id}`);
-    chat_div.classList.toggle("d-none");
+  const chat_div = document.getElementById(`chat_div-${id}`);
+  chat_div.classList.toggle("d-none");
 }
 
 function see_more_post(id) {
-    document.getElementById(`see_all_post-${id}`).classList.toggle("disc3");
-    document.getElementById(`see_all_post1-${id}`).classList.toggle("d-none");
+  document.getElementById(`see_all_post-${id}`).classList.toggle("disc3");
+  document.getElementById(`see_all_post1-${id}`).classList.toggle("d-none");
 }
 
 function name_edit2() {
-    const bio_edit = document.getElementById("bio_edit");
-    bio_edit.classList.toggle("d-none");
+  const bio_edit = document.getElementById("bio_edit");
+  bio_edit.classList.toggle("d-none");
 }
 
 const quill = new Quill("#editor", {
-    placeholder: "Start a post...",
-    theme: "snow", // or 'bubble'
+  placeholder: "Start a post...",
+  theme: "snow", // or 'bubble'
 });
 
-const formContent = document.getElementById('post-form-content')
-const formCategory = document.getElementById('post-form-category')
-const formType = document.getElementById('post-form-type')
-const formSubmit = document.getElementById('post-form-btn')
-const userId = document.getElementById('user-id')
+const formContent = document.getElementById("post-form-content");
+const formCategory = document.getElementById("post-form-category");
+const formType = document.getElementById("post-form-type");
+const formSubmit = document.getElementById("post-form-btn");
+const userId = document.getElementById("user-id");
 
 function newPostEditing() {
+  if (formCategory.value == 0) {
+    formSubmit.disabled = true;
+    return;
+  }
 
-    if (formCategory.value == 0) {
-        formSubmit.disabled = true
-        return
-    }
-
-    formSubmit.disabled = false
+  formSubmit.disabled = false;
 }
 
 async function addNewPost() {
-    const quillContent = quill.root.innerHTML;
-    const body = { description: quillContent, post_categories_id: formCategory.value, post_types_id: formType.value, users_id: userId.value }
-    const res = await postData("/posts/add", body)
-    if (!res.success) {
-        alert(`Something went wrong\n${res.msg}`)
-        return
-    }
+  const quillContent = quill.root.innerHTML;
+  const body = {
+    description: quillContent,
+    post_categories_id: formCategory.value,
+    post_types_id: formType.value,
+    users_id: userId.value,
+  };
+  const res = await postData("/posts/add", body);
+  if (!res.success) {
+    alert(`Something went wrong\n${res.msg}`);
+    return;
+  }
 
-    alert("Post added")
+  alert("Post added");
 }
 
-formSubmit.addEventListener('click', () => addNewPost())
+formSubmit.addEventListener("click", () => addNewPost());
 
+// _____________________________kosala____________________________________
+
+var imageInput = document.getElementById("imageInput");
+var imagePreview = document.getElementById("imagePreview");
+
+imageInput.addEventListener("change", function () {
+  var file = imageInput.files[0];
+  if (file) {
+    if (isImageFile(file)) {
+      displayImagePreview(file);
+    } else {
+      imageInput.value = "";
+      alert("Only image files are allowed.");
+    }
+  }
+});
+
+function isImageFile(file) {
+  return file.type.startsWith("image/");
+}
+
+function displayImagePreview(file) {
+  var reader = new FileReader();
+  reader.onload = function (e) {
+    var img = document.createElement("img");
+    img.src = e.target.result;
+    img.classList.add("img-thumbnail");
+    imagePreview.innerHTML = "";
+    imagePreview.appendChild(img);
+    document.getElementById("add_post_img").classList.add("d-none");
+    document.getElementById("remove_post_img").classList.remove("d-none");
+  };
+  reader.readAsDataURL(file);
+}
+
+function remove_post_img() {
+  document.getElementById("imageInput").value = "";
+  document.getElementById("imagePreview").innerHTML = "";
+  document.getElementById("add_post_img").classList.remove("d-none");
+  document.getElementById("remove_post_img").classList.add("d-none");
+}

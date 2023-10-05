@@ -55,9 +55,14 @@
     display: none !important;
 }
 
-.ql-snow {
-    border: none !important;
+.ql-toolbar {
+    padding: 0 !important;
+    border-bottom: none !important;
 }
+
+/* .ql-snow {
+    border: none !important;
+} */
 
 @media (max-width: 700px) {
     .flex_lg {
