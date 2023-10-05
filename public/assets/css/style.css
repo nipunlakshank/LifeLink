@@ -1,9 +1,5 @@
-.logo-wrapper{
+.ji-center {
     display: flex;
     align-items: center;
-    gap: 1em;
-    width: 80%;
-    margin-bottom: 2em;
-    margin-top: 2em;
-    margin-left: 2em;
+    justify-content: center;
 }

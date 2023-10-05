@@ -1,7 +1,11 @@
 <?php $this->view('includes/header') ?>
 
 <main>
-    Lorem ipsum dolor sit amet.
+
+    <div class="container">
+        <h1>sdlslk</h1>
+    </div>
+
 </main>
 
 <?php $this->view('includes/footer') ?>

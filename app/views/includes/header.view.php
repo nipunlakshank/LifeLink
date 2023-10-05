@@ -8,6 +8,8 @@
     <title><?= APP_NAME ?> | <?= $this->title ?></title>
 
     <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="<?= PUBLIC_ROOT ?>/assets/plugins/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="<?= PUBLIC_ROOT ?>/assets/css/style.css">
     <link rel="stylesheet" href="<?= PUBLIC_ROOT ?>/assets/css/animation.css">
@@ -26,8 +28,24 @@
 
 <body>
     <header>
-        <div class="logo-wrapper">
-            <img style="width: 100px;" src="<?= APP_LOGO ?>" alt="LOGO">
-            <h1><?= APP_NAME ?></h1>
+        <div class="" style="background-color: #fff;">
+            <div class="p-3 d-flex">
+                <div class="pe-3">
+                    <img style="width: 40px;" src="<?= APP_LOGO ?>" alt="LOGO" class="">
+                </div>
+                <div class="d-flex justify-content-center align-items-center border border-1 rounded rounded-2">
+                    <i class="fa-solid fa-magnifying-glass mx-2 opacity-75"></i>
+                    <input type="text" style="outline: none; border: none;" placeholder="Search..">
+                </div>
+                <div>
+                    <i class="fa-solid fa-house"></i>
+                </div>
+                <div>
+
+                </div>
+                <div>
+
+                </div>
+            </div>
         </div>
     </header>
