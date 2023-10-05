@@ -129,7 +129,7 @@
                                     </div>
 
                                     <div class="text-end">
-                                        <?php if (Auth::logged_in()) : ?>
+                                        <?php if (Auth::logged_in() && Auth::getId() == $post->users_id) : ?>
                                             <span class="pointer" style="font-size: 12px;"><i class="fa-regular fa-pen-to-square pe-1"></i>Edit</span>
                                         <?php endif; ?>
                                         <p class="m-0 opacity-75" style="font-size: 12px;"><?= $post->time_diff ?></p>
