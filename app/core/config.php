@@ -33,11 +33,10 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
 
    // Database config
    define("DB_HOST", "localhost");
-   define("DB_NAME", "lifeLink_db");
+   define("DB_NAME", "lifelink_db");
    define("DB_USER", "root");
    define("DB_PASSWORD", "");
    define("DB_DRIVER", "mysql");
-
 } else {
 
    /**
@@ -63,7 +62,8 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
  */
 define("APP_NAME", "LifeLink");
 define("APP_LOGO", PUBLIC_ROOT . "/assets/images/logo.png");
-define("APP_ICON", PUBLIC_ROOT . "/assets/images/favicon.ico");
+define("APP_LOGO2", PUBLIC_ROOT . "/assets/images/logon.png");
+define("APP_ICON", PUBLIC_ROOT . "/assets/images/favicon.png");
 define("APP_DESC", "Description");
 define("APP_EMAIL", "lifelink@gmail.com");
 define("APP_TEL", "+94 77 1234 567");

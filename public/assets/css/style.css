@@ -1,9 +1,44 @@
-.logo-wrapper{
+.ji-center {
     display: flex;
     align-items: center;
-    gap: 1em;
-    width: 80%;
-    margin-bottom: 2em;
-    margin-top: 2em;
-    margin-left: 2em;
+    justify-content: center;
+}
+
+.none_lg {
+    display: none;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.disc {
+    max-height: 150px;
+    overflow: hidden;
+    transition: max-height .7s ease-in-out;
+}
+
+.disc2 {
+    max-height: 700px;
+    overflow-x: scroll;
+    transition: max-height .7s ease-in-out;
+}
+
+
+.see_more {
+    font-size: 12px;
+    cursor: pointer;
+    color: #1A161B;
+    text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+    .flex_lg {
+        display: none;
+    }
+
+    .none_lg {
+        display: block;
+    }
+
 }

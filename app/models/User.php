@@ -11,18 +11,30 @@ class User extends Model
     protected array $insert_columns = [
         'fname',
         'lname',
+        'mobile',
         'email',
         'password',
+        'username',
+        'img',
+        'bio',
+        'otp',
+        'points',
     ];
     protected array $select_columns = [
         'id',
         'fname',
         'lname',
+        'mobile',
         'email',
         'password',
-        'mobile',
-        'dob',
-        'role',
+        'username',
+        'img',
+        'bio',
+        'otp',
+        'points',
+        'is_active',
+        'created_at',
+        'udpated_at',
     ];
 
     public function validate($data): bool
@@ -67,12 +79,12 @@ class User extends Model
         }
 
         // Validate email
-        if (empty($data['reg_email'])) {
-            $this->errors['reg_email'] = "Email is required";
-        } else if (!filter_var($data['reg_email'], FILTER_VALIDATE_EMAIL)) {
-            $this->errors['reg_email'] = "Invalid email";
-        }else if(!empty($this->select(['email' => $data['reg_email']]))){
-            $this->errors['reg_email'] = "Email already exists";
+        if (empty($data['username'])) {
+            $this->errors['username'] = "Username is required";
+        } else if (!filter_var($data['username'], FILTER_VALIDATE_EMAIL)) {
+            $this->errors['username'] = "Invalid Username";
+        } else if(!empty($this->select(['username' => $data['username']]))){
+            $this->errors['username'] = "Username already exists";
         }
 
         // Validate password
@@ -92,12 +104,12 @@ class User extends Model
     {
         $this->errors = [];
 
-        if (empty($data['email'])) {
-            $this->errors['email'] = "Email is empty";
-        } else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-            $this->errors['email'] = "Invalid email";
-        }else if(empty($this->selectOne(['email' => $data['email']]))){
-            $this->errors['email'] = "Wrong email or password";
+        if (empty($data['username'])) {
+            $this->errors['username'] = "Username is empty";
+        } else if (!filter_var($data['username'], FILTER_VALIDATE_EMAIL)) {
+            $this->errors['username'] = "Invalid Username";
+        }else if(empty($this->selectOne(['username' => $data['username']]))){
+            $this->errors['username'] = "Wrong Username or Password";
             $this->errors['password'] = " ";
         }
 
@@ -108,17 +120,16 @@ class User extends Model
 
     protected function insert_hook(array $data): array
     {
-
         if (!empty($data['new_password']))
             $data['password'] = $data['new_password'];
 
-        if (!empty($data['reg_email']))
-            $data['email'] = $data['reg_email'];
+        if (!empty($data['username']))
+            $data['username'] = $data['username'];
 
         // Sanitizing data
         $data['fname'] = ucfirst(strtolower($data['fname']));
         $data['lname'] = ucfirst(strtolower($data['lname']));
-        $data['email'] = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
+        $data['username'] = filter_var($data['username'], FILTER_SANITIZE_EMAIL);
         // Password Hashing
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
