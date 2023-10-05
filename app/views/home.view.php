@@ -130,9 +130,6 @@
                                 <div class="position-relative mt-2 disc1" style="font-size: 14px;" id="see_all_post">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent metus quam, faucibus id pulvinar et, placerat ac urna. Donec laoreet mollis lacus, sed dignissim nulla mollis a. Quisque tempor fermentum massa, at porta nibh vulputate at. Phasellus placerat, quam eget fringilla sodales, leo sem accumsan metus, a scelerisque ante metus et odio. Maecenas consectetur ipsum tortor, et rhoncus eros maximus eu. Fusce luctus neque ac ipsum porttitor faucibus. Nullam eget mauris ligula. Curabitur iaculis commodo libero at ultrices. Proin at libero enim. Cras ac libero a libero consequat porttitor sit amet a metus. Curabitur in sodales diam. Etiam dictum efficitur arcu sed interdum. Suspendisse in tellus quis tortor congue lobortis quis at lectus. Aenean aliquam a tellus nec luctus. Fusce faucibus finibus enim, vel convallis est finibus et.
                                     <span onclick="see_more_post();" class=" pointer position-absolute " id="see_all_post1" style="right: 0; bottom: 5px;  background-color: #FFFFFF; color: #378FE9; ">...see more</span>
                                 </div>
-                                <!-- <div class="mt-2" style="font-size: 14px;">
-                                For decades, math has been widely cited as Americans' least favorite subject, and algebra is the most frequently failed high school course in the country. But perhaps the problem isn’t that students can’t keep up with what they learn
-                            </div> -->
                                 <div class="col-12 position-relative mt-2" style="height: auto;">
                                     <img src="https://img.freepik.com/free-photo/woman-sitting-grass-checking-her-phone_23-2148739296.jpg" alt="" style="width: 100%;">
                                 </div>
@@ -195,14 +192,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            <?php endforeach; ?>
                                             </div>
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
                             </div>
-                        <?php endforeach; ?>
-
                         </div>
+                    <?php endforeach; ?>
+
                 </div>
             </div>
 
