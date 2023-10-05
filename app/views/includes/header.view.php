@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="<?= APP_ICON ?>" type="image/x-icon">
     <link rel="shortcut icon" href="<?= APP_ICON ?>" type="image/x-icon">
-    <title><?= APP_NAME ?> | <?= $this->title ?></title>
+    <title><?= $this->title ?> | <?= APP_NAME ?></title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css">
+    <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.core.css">
     <link rel="stylesheet" href="<?= PUBLIC_ROOT ?>/assets/css/select2.min.css">
     <link rel="stylesheet" href="<?= PUBLIC_ROOT ?>/assets/plugins/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="<?= PUBLIC_ROOT ?>/assets/css/style.css">
@@ -21,6 +23,8 @@
 
     <!-- JS -->
     <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script defer src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/quill-image-resize-module@3.0.0/image-resize.min.js"></script>
     <script defer src="<?= PUBLIC_ROOT ?>/assets/js/select2.min.js"></script>
     <script defer src="<?= PUBLIC_ROOT ?>/assets/js/form-advanced.init.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

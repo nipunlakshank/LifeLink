@@ -74,7 +74,7 @@ class Model extends Database
         $this->iud($query, $data);
     }
 
-    public function select(array $data, array $select_columns = []): array|null
+    public function select(array $data, array $select_columns = []): array
     {
         if (empty($select_columns)) {
             $select_columns = $this->select_columns;
@@ -93,7 +93,7 @@ class Model extends Database
         if (is_array($result) && !empty($result)) {
             return $result;
         }
-        return null;
+        return [];
     }
 
     public function selectOne(array $data, array $select_columns = []): array|object|null
@@ -119,7 +119,7 @@ class Model extends Database
         return null;
     }
 
-    public function selectAll(array $select_columns = [], int $limit = 1000): array|null
+    public function selectAll(array $select_columns = [], int $limit = 1000): array
     {
         if (empty($select_columns)) {
             $select_columns = $this->select_columns;
@@ -129,6 +129,6 @@ class Model extends Database
         if (is_array($result) && !empty($result)) {
             return $result;
         }
-        return null;
+        return [];
     }
 }
