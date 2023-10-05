@@ -40,14 +40,14 @@
                     </div>
                     <div class="input-group">
                         <div class="input-field">
-                            <input type="email" class="input-box" name="email" value="<?= get_value('email') ?>" id="email" placeholder=" " required1>
+                            <input type="email" class="input-box" name="email" value="<?= get_value('email') ?>" id="email" placeholder=" " required>
                             <label for="email">Email</label>
                             <?php if (!empty($errors['email'])) : ?>
                                 <span class="text-error"><?= $errors['email'] ?></span>
                             <?php endif; ?>
                         </div>
                         <div class="input-field">
-                            <input type="password" class="input-box" name="password" value="<?= get_value('password') ?>" id="passwd-1" placeholder=" " required1>
+                            <input type="password" class="input-box" name="password" value="<?= get_value('password') ?>" id="passwd-1" placeholder=" " required>
                             <label for="passwd-1">Password</label>
                             <div class="eye-area">
                                 <div class="eye-box" onclick="togglePassword(1)">
