@@ -151,24 +151,13 @@
                                         <i class="fa-solid fa-thumbs-up fa-rotate-180 ps-2" style="color: #ff906c;"></i>
                                         <span class="flex_lg" style="font-size: 13px;">Downvote</span>
                                     </p>
-                                    <p onclick="open_chat();" class="me-4 m-0 ji-center pointer" style="font-size: 20px;"><i class="opacity-50 fa-solid fa-message pe-2"></i><span class="flex_lg" style="font-size: 13px;">Comment</span></p>
+                                    <p onclick="open_chat(<?= $post->id ?>);" class="me-4 m-0 ji-center pointer" style="font-size: 20px;"><i class="opacity-50 fa-solid fa-message pe-2"></i><span class="flex_lg" style="font-size: 13px;">Comment</span></p>
                                 </div>
                                 <div class="">
                                     <span class="opacity-75 pe-3" style="font-size: 13px;">7 upvote</span>
                                     <span class="opacity-75" style="font-size: 13px;">3 downvote</span>
                                 </div>
                                 <hr>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="ji-center">
-                                        <p class="me-4 m-0 ji-center pointer" style="font-size: 20px;"><i class="opacity-50 fa-solid fa-thumbs-up pe-2"></i><span class="flex_lg" style="font-size: 13px;">Upvote</span></p>
-                                        <p class="me-4 m-0 ji-center pointer" style="font-size: 20px;"><i class="opacity-50 fa-solid fa-thumbs-up fa-rotate-180 ps-2"></i><span class="flex_lg" style="font-size: 13px;">Downvote</span></p>
-                                        <p onclick="open_chat(<?= $post->id ?>);" class="me-4 m-0 ji-center pointer" style="font-size: 20px;"><i class="opacity-50 fa-solid fa-message pe-2"></i><span class="flex_lg" style="font-size: 13px;">Comment</span></p>
-                                    </div>
-                                    <div class="">
-                                        <span class="opacity-75 pe-3" style="font-size: 13px;">7 upvote</span>
-                                        <span class="opacity-75" style="font-size: 13px;">3 downvote</span>
-                                    </div>
-                                </div>
                                 <div class="py-4 d-none" id="chat_div-<?= $post->id ?>">
                                     <div class="ji-center col-12 position-relative">
                                         <div class="position-relative rounded rounded-circle" style="width: 45px; height: 45px;">
@@ -185,46 +174,45 @@
                                     </div>
                                     <div class="position-relative" id="cardContainer">
 
-
-                                        <div class="card_div">
-                                            <div class="border-bottom mt-4 d-flex">
-                                                <div class="col-lg-1 col-md-1 col-sm-2">
-                                                    <div class="rounded-circle ji-centered" style="background-image: url(https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_small/v1/attachments/profile/photo/ecb924c7b3195c692127557f2c6385c8-638721441668843162.71172/6B4F23C6-F02D-4CCF-95A4-E8796DD1AF10); background-size: cover; width: 40px; height: 40px; background-color: #ff7300; cursor: pointer;">
-                                                    </div>
-                                                </div>
-                                                <div class="ps-1 col-lg-11 col-md-11 col-sm-10">
-                                                    <div class="p-3 pt-2 pb-2 mb-3" style="background-color: #f2f2f2; border-radius: 0 9px 9px 9px;">
-                                                        <div class="d-flex justify-content-between align-items-center">
-                                                            <p class="fw-bold opacity-75 m-0" style="font-size: 15px;">Bryan D.</p>
-                                                            <p class="opacity-75 m-0" style="font-size: 11px;">11 JUL 2023</p>
+                                        <?php foreach ($post->comments as $comment) : ?>
+                                            <div class="card_div">
+                                                <div class="border-bottom mt-4 d-flex">
+                                                    <div class="col-lg-1 col-md-1 col-sm-2">
+                                                        <div class="rounded-circle ji-centered" style="background-image: url(https://fiverr-res.cloudinary.com/image/upload/f_auto,q_auto,t_profile_small/v1/attachments/profile/photo/ecb924c7b3195c692127557f2c6385c8-638721441668843162.71172/6B4F23C6-F02D-4CCF-95A4-E8796DD1AF10); background-size: cover; width: 40px; height: 40px; background-color: #ff7300; cursor: pointer;">
                                                         </div>
                                                     </div>
                                                     <div class="ps-1 col-lg-11 col-md-11 col-sm-10">
                                                         <div class="p-3 pt-2 pb-2 mb-3" style="background-color: #f2f2f2; border-radius: 0 9px 9px 9px;">
                                                             <div class="d-flex justify-content-between align-items-center">
-                                                                <p class="fw-bold opacity-75 m-0" style="font-size: 15px;"><?= $comment->name ?></p>
-                                                                <p class="opacity-75 m-0 ps-2" style="font-size: 11px;"><?= $comment->time_diff ?></p>
+                                                                <p class="fw-bold opacity-75 m-0" style="font-size: 15px;">Bryan D.</p>
+                                                                <p class="opacity-75 m-0" style="font-size: 11px;">11 JUL 2023</p>
                                                             </div>
-                                                            <div class="m-0">
-                                                                <span class="opacity-75" style="font-size: 14px;">
-                                                                    <?= $comment->comment ?>
-                                                                </span>
+                                                        </div>
+                                                        <div class="ps-1 col-lg-11 col-md-11 col-sm-10">
+                                                            <div class="p-3 pt-2 pb-2 mb-3" style="background-color: #f2f2f2; border-radius: 0 9px 9px 9px;">
+                                                                <div class="d-flex justify-content-between align-items-center">
+                                                                    <p class="fw-bold opacity-75 m-0" style="font-size: 15px;"><?= $comment->name ?></p>
+                                                                    <p class="opacity-75 m-0 ps-2" style="font-size: 11px;"><?= $comment->time_diff ?></p>
+                                                                </div>
+                                                                <div class="m-0">
+                                                                    <span class="opacity-75" style="font-size: 14px;">
+                                                                        <?= $comment->comment ?>
+                                                                    </span>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+                                            <?php endforeach; ?>
                                             </div>
-                                        <?php endforeach; ?>
                                     </div>
                                 </div>
                             </div>
+                        <?php endforeach; ?>
+
                         </div>
                 </div>
-            <?php endforeach; ?>
-
             </div>
-        </div>
-    </div>
 
 </main>
 
