@@ -8,6 +8,7 @@ class App
 
     function __construct()
     {
+        validate_session();
         $this->sanitizeRequest();
         $arr = $this->getParams();
         $filename = "app/controllers/" . ucfirst($arr[0]) . ".php";

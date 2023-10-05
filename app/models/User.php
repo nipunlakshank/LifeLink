@@ -18,6 +18,7 @@ class User extends Model
         'img',
         'bio',
         'otp',
+        'token',
         'points',
     ];
     protected array $select_columns = [
@@ -31,10 +32,11 @@ class User extends Model
         'img',
         'bio',
         'otp',
+        'token',
         'points',
         'is_active',
         'created_at',
-        'udpated_at',
+        'updated_at',
     ];
 
     public function validate($data): bool
@@ -81,7 +83,7 @@ class User extends Model
         // Validate email
         if (empty($data['username'])) {
             $this->errors['username'] = "Username is required";
-        } else if (!filter_var($data['username'], FILTER_VALIDATE_EMAIL)) {
+        } else if (!preg_match("/^[A-Za-z][A-Za-z0-9]{5,31}$/", $data['username'])) {
             $this->errors['username'] = "Invalid Username";
         } else if(!empty($this->select(['username' => $data['username']]))){
             $this->errors['username'] = "Username already exists";
@@ -106,7 +108,7 @@ class User extends Model
 
         if (empty($data['username'])) {
             $this->errors['username'] = "Username is empty";
-        } else if (!filter_var($data['username'], FILTER_VALIDATE_EMAIL)) {
+        } else if (!preg_match("/^[A-Za-z][A-Za-z0-9]{5,31}$/", $data["username"])) {
             $this->errors['username'] = "Invalid Username";
         }else if(empty($this->selectOne(['username' => $data['username']]))){
             $this->errors['username'] = "Wrong Username or Password";

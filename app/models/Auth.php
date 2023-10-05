@@ -6,11 +6,14 @@
 
 class Auth
 {
-    public static function authenticate(object|array $user): void
+    public static function authenticate(object|array $user, bool $remember = false): void
     {
         if (is_object($user)) {
             init_session();
             $_SESSION['USER_DATA'] = $user;
+            if($remember){
+                setcookie("USER_DATA", $user->token);
+            }
         }
     }
 

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- CSS -->
+    <link rel="icon" href="<?= PUBLIC_ROOT ?>/assets/images/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400&display=swap" rel="stylesheet">
@@ -16,9 +17,7 @@
     <!-- JS -->
     <script defer src="<?= PUBLIC_ROOT ?>/assets/js/login.js"></script>
 
-
-
-    <title>Login | Gift Zone</title>
+    <title>Login | Lifelink</title>
 
 </head>
 
@@ -26,7 +25,7 @@
 
     <?php $this->view('includes/popup') ?>
 
-    <div class="container login">
+    <div class="container <?= $page ?>">
         <div class="box ">
             <img class="logo" src="<?= APP_LOGO2 ?>" role="logo" alt="<?= APP_NAME ?>">
 
@@ -101,6 +100,13 @@
                             <label for="regEmail">Email</label>
                             <?php if (!empty($errors['reg_email'])) : ?>
                                 <span class="text-error"><?= $errors['reg_email'] ?></span>
+                            <?php endif; ?>
+                        </div>
+                        <div class="input-field">
+                            <input type="username" class="input-box" name="username" value="<?= get_value('username') ?>" id="username" placeholder=" " required>
+                            <label for="username">Username</label>
+                            <?php if (!empty($errors['username'])) : ?>
+                                <span class="text-error"><?= $errors['username'] ?></span>
                             <?php endif; ?>
                         </div>
                         <div class="input-field">

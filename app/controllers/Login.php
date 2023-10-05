@@ -5,16 +5,14 @@ class Login extends Controller
 
     public function index(): void
     {
-
         if ($_SERVER['REQUEST_METHOD'] === "POST") {
             if ($_POST['form'] === "login") {
                 $this->login();
-                return;
             }
             if ($_POST['form'] === 'register') {
                 $this->register();
-                return;
             }
+            return;
         }
         $this->view('login');
     }
