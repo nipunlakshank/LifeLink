@@ -173,7 +173,7 @@ body {
   color: #040404;
   border: none;
   border-radius: 10px;
-  padding: 7px 45px 0 20px;
+  padding: 12px 45px 5px 20px;
   background: rgba(224, 223, 223, 0.6);
   backdrop-filter: blur(2px);
   outline: none;
