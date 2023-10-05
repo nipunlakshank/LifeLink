@@ -26,6 +26,12 @@
                             <div class="disc m-0 ji-center my-1" id="see_all">
                                 <?php if (Auth::logged_in()) : ?>
                                     <p class="opacity-75 m-0"><?= Auth::getBio() ?></p>
+                                    <p class="fw-bold opacity-75">add bio <i class="fa-regular fa-pen-to-square col-2 pointer" onclick="name_edit2();"></i></p>
+                                    <div id="bio_edit" class="d-none position-absolute border border-1 rounded-3 bg-white col-12 p-3" style="z-index: 9; left: 0;">
+                                        <textarea class="form-control mb-3" placeholder="Add Bio" name="" id="" cols="30" rows="2" style="outline: none;"></textarea>
+                                        <button class="btn btn-primary btn-sm ">Add</button>
+                                        <button class="btn btn-danger btn-sm" onclick="name_edit2()">Cancel</button>
+                                    </div>
                                 <?php else : ?>
                                     <a href="<?= ROOT ?>/login" class="btn btn-primary d-block">Log In</a>
                                 <?php endif; ?>
@@ -35,20 +41,14 @@
                         <?php if (Auth::logged_in()) : ?>
                             <div class="row">
                                 <div class="col d-flex justify-content-between align-items-center">
-                                    <input id="mobile" type="text" class="col-10 opacity-75" readonly value="<?= Auth::getMobile() ?>" style="font-size: 14px; border: none;">
-                                    <i class="fa-regular fa-pen-to-square col-2 pointer" onclick="open_edit1();" id="edit_icn1"></i>
+                                    <input placeholder="add mobile number" id="mobile" type="text" class="col-10 opacity-75" readonly value="<?= Auth::getMobile() ?>" style="font-size: 14px; border: none;">
+                                    <i class="opacity-75 fa-regular fa-pen-to-square col-2 pointer" onclick="open_edit1();" id="edit_icn1"></i>
                                     <button class="btn btn-primary btn-sm ms-1 d-none" style="font-size: 13px;" id="update_icon1">update</button>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col d-flex justify-content-between align-items-center">
-                                    <input id="mobile" type="text" class="col-10 opacity-75" readonly value="<?= Auth::getEmail() ?>" style="font-size: 14px; border: none;">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col d-flex justify-content-between align-items-center">
-                                    <input id="mobile" type="text" class="col-10 opacity-75" readonly value="<?= Auth::getUsername() ?>" style="font-size: 14px; border: none;">
-                                </div>
+                            <div class="text-start">
+                                <span class="col-10 opacity-75" style="font-size: 14px; border: none;"><?= Auth::getEmail() ?></span><br>
+                                <span class="col-10 opacity-75" style="font-size: 14px; border: none;"><?= Auth::getUsername() ?></span>
                             </div>
                         <?php endif; ?>
                     </div>
@@ -69,19 +69,30 @@
                     <div class="border border-1 shadow shadow-sm rounded-3 mb-4">
                         <div class="p-3 position-relative">
 
-                            <div id="editor" class="rounded-bottom"></div>
-                            <!-- <textarea class="form-control" placeholder="Start a post" name="" id="" cols="30" rows="6" style="outline: none;"></textarea> -->
+                            <div class=""><input type="text" class="form-control mb-2" placeholder="Post title"></div>
+                            <div id="editor" class="rounded-bottom border border-1"></div>
                             <div class="mt-3 w-100">
                                 <div class="row">
                                     <div class="col-lg-4 row mb-4">
-                                        <div class="pointer opacity-75 fw-bold ji-center col"><i class="fa-regular fa-image fs-5 pe-2" style="color: #378FE9;"></i>Images</div>
-                                        <div class="pointer opacity-75 fw-bold ji-center col"><i class="fa-solid fa-location-dot fs-5 pe-2" style="color: #CB1410;"></i>Location</div>
+                                        <div class="pointer opacity-75 fw-bold ji-center col position-relative">
+                                            <label for="imageInput" class="pointer">
+                                                <input type="file" class="d-none" id="imageInput" accept="image/*">
+                                                <span id="add_post_img"><i class="fa-regular fa-image fs-5 pe-2" style="color: #378FE9;"></i>Images</span>
+                                            </label>
+                                            <div id="imagePreview">
+                                            </div>
+                                            <i class="fa-solid fa-circle-xmark position-absolute d-none" id="remove_post_img" onclick="remove_post_img();" style="right: 6px; top: -3px; z-index: 9;"></i>
+                                        </div>
+                                        <div class="pointer opacity-75 fw-bold ji-center col">
+                                            <input type="text" class="form-control" id="autocomplete" name="city_town">
+                                            <!-- <span><i class="fa-solid fa-location-dot fs-5 pe-2" style="color: #CB1410;"></i>Location</span> -->
+                                        </div>
                                     </div>
                                     <div class="col-lg-6 row mb-4 ji-center">
                                         <div class="col-6">
                                             <input type="hidden" value="<?= Auth::getId() ?>" id="user-id" />
                                             <select id="post-form-category" class="form-control select2" onchange="newPostEditing()">
-                                                <option value="0">Select post category</option>
+                                                <option value="0">Post category</option>
                                                 <?php foreach ($categories ?? [] as $cat) : ?>
                                                     <option value="<?= $cat->id ?>"><?= $cat->name ?></option>
                                                 <?php endforeach; ?>
@@ -95,7 +106,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-lg-2 mb-4">
+                                    <div class="col-lg-2 mb-4 ji-center">
                                         <button class="btn btn-primary fw-bold col-12" id="post-form-btn" disabled="true">POST</button>
                                     </div>
                                 </div>
