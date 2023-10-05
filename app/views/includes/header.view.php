@@ -8,7 +8,7 @@
     <title><?= APP_NAME ?> | <?= $this->title ?></title>
 
     <!-- CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="<?= PUBLIC_ROOT ?>/assets/plugins/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="<?= PUBLIC_ROOT ?>/assets/css/style.css">
     <link rel="stylesheet" href="<?= PUBLIC_ROOT ?>/assets/css/animation.css">
     <?php if (file_exists(SERVER_ROOT . "/public/assets/css/" . strtolower(App::$page) . ".css")) : ?>

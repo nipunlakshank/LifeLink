@@ -33,7 +33,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
 
    // Database config
    define("DB_HOST", "localhost");
-   define("DB_NAME", "lifeLink_db");
+   define("DB_NAME", "lifeline_db");
    define("DB_USER", "root");
    define("DB_PASSWORD", "");
    define("DB_DRIVER", "mysql");
