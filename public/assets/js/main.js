@@ -58,6 +58,10 @@ function name_edit2() {
     bio_edit.classList.toggle("d-none");
 }
 
+const quill = new Quill("#editor", {
+    placeholder: "Start a post...",
+    theme: "snow", // or 'bubble'
+});
 
 const formContent = document.getElementById('post-form-content')
 const formCategory = document.getElementById('post-form-category')
@@ -67,7 +71,7 @@ const userId = document.getElementById('user-id')
 
 function newPostEditing() {
 
-    if(formContent.value === "" || formCategory.value == 0){
+    if (formCategory.value == 0) {
         formSubmit.disabled = true
         return
     }
@@ -75,10 +79,11 @@ function newPostEditing() {
     formSubmit.disabled = false
 }
 
-async function addNewPost(){
-    const body = {description: formContent.value, post_categories_id: formCategory.value, post_types_id: formType.value, users_id: userId.value}
+async function addNewPost() {
+    const quillContent = quill.root.innerHTML;
+    const body = { description: quillContent, post_categories_id: formCategory.value, post_types_id: formType.value, users_id: userId.value }
     const res = await postData("/posts/add", body)
-    if(!res.success){
+    if (!res.success) {
         alert(`Something went wrong\n${res.msg}`)
         return
     }
@@ -88,9 +93,3 @@ async function addNewPost(){
 
 formSubmit.addEventListener('click', () => addNewPost())
 
-const quill = new Quill("#editor", {
-  placeholder: "Start a post...",
-  theme: "snow", // or 'bubble'
-});
-
-const quillContent = quill.root.innerHTML;

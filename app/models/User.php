@@ -109,7 +109,7 @@ class User extends Model
             $this->errors['new_password'] = "Should contain atleast one digit";
         } else if (!preg_match("/[#?!@$%^&*-]+/", $data['new_password'])) {
             $this->errors['new_password'] = "Should contain atleast one special charactor";
-        }else if(strlen($data["new_password"]) < 8){
+        } else if (strlen($data["new_password"]) < 8) {
             $this->errors['new_password'] = "Should contain atleast 8 digits";
         }
 
@@ -142,13 +142,13 @@ class User extends Model
         if (!empty($data['new_password']))
             $data['password'] = $data['new_password'];
 
-        if (!empty($data['username']))
-            $data['username'] = $data['username'];
-
+        if (!empty($data['new_username']))
+            $data['username'] = $data['new_username'];
+            
         // Sanitizing data
         $data['fname'] = ucfirst(strtolower($data['fname']));
         $data['lname'] = ucfirst(strtolower($data['lname']));
-        $data['username'] = filter_var($data['username'], FILTER_SANITIZE_EMAIL);
+        $data['email'] = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
         // Password Hashing
         $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 

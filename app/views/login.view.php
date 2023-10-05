@@ -96,7 +96,7 @@
                             <?php endif; ?>
                         </div>
                         <div class="input-field">
-                            <input type="email" class="input-box" name="email" value="<?= get_value('email') ?>" id="regEmail" placeholder=" " required>
+                            <input type="email" class="input-box" name="email" value="<?= get_value('email') ?>" id="email" placeholder=" " required>
                             <label for="regEmail">Email</label>
                             <?php if (!empty($errors['email'])) : ?>
                                 <span class="text-error"><?= $errors['email'] ?></span>
