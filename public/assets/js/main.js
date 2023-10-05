@@ -44,6 +44,9 @@ function open_edit1() {
 }
 function name_edit1() {
   var name_edit = document.getElementById("name_edit");
-
   name_edit.classList.toggle("d-none");
+}
+function open_log_out() {
+  var log_out_div = document.getElementById("log_out_div");
+  log_out_div.classList.toggle("d-none");
 }

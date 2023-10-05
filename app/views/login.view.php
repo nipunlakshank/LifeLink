@@ -39,10 +39,10 @@
                     </div>
                     <div class="input-group">
                         <div class="input-field">
-                            <input type="email" class="input-box" name="email" value="<?= get_value('email') ?>" id="email" placeholder=" " required>
-                            <label for="email">Email</label>
-                            <?php if (!empty($errors['email'])) : ?>
-                                <span class="text-error"><?= $errors['email'] ?></span>
+                            <input type="username" class="input-box" name="username" value="<?= get_value('username') ?>" id="username" placeholder=" " required>
+                            <label for="username">Username</label>
+                            <?php if (!empty($errors['username'])) : ?>
+                                <span class="text-error"><?= $errors['username'] ?></span>
                             <?php endif; ?>
                         </div>
                         <div class="input-field">

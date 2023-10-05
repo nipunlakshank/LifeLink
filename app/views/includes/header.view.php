@@ -49,7 +49,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ji-center">
+                    <div class="ji-center position-relative">
                         <div class="mx-3 ms-5 text-center border-bottom border-2 border-dark pointer">
                             <i class="fa-solid fa-house opacity-50 fs-5"></i>
                             <p class="m-0 flex_lg" style="font-size: 12px;">Home</p>
@@ -62,10 +62,13 @@
                             <i class="fa-solid fa-envelope  opacity-50 fs-5"></i>
                             <p class="m-0 flex_lg" style="font-size: 12px;">Messaging</p>
                         </div>
-                        <div class="ji-center border-start ps-3 pointer">
+                        <div class="ji-center border-start ps-3 pointer" onclick="open_log_out();">
                             <div class="ji-center position-relative rounded rounded-circle" style="width: 35px; height: 35px;">
                                 <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="" class="img-fluid">
                             </div>
+                        </div>
+                        <div id="log_out_div" class="d-none position-absolute bg-white p-4 py-2 border border-1 rounded rounded-3" style="right: 37px; z-index: 9; top: 0;">
+                            <a class="text-danger" href="">Log out</a>
                         </div>
                     </div>
                 </div>
