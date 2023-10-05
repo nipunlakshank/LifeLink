@@ -7,55 +7,54 @@
   font-family: "Poppins", sans-serif;
 }
 body {
-  background: url("../img/bg/login-bg.png");
+  background: url("http://localhost/lifelink/public/assets/images/login/bgscreen.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  position: relative;
 }
 
-.popup-box{
-    position: absolute;
-    top: 30px;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    padding: 0.8em 1em;
-    width: 90%;
-    display: flex;
-    align-items: center;
-    border: none;
-    border-radius: 10px;
-    background-color: rgb(255, 255, 255, 30%);
-    opacity: 0;
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    z-index: 1;
-    transition: opacity 2s, backdrop-filter 1s;
-    will-change: opacity, backdrop-filter, visibility;
+.popup-box {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  padding: 0.8em 1em;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255, 30%);
+  opacity: 0;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  z-index: 1;
+  transition: opacity 2s, backdrop-filter 1s;
+  will-change: opacity, backdrop-filter, visibility;
 }
 
-.popup-box:hover{
-    opacity: 1;
+.popup-box:hover {
+  opacity: 1;
 }
 
-.popup-close{
-    font-family: 'Rubik', sans-serif;
-    font-weight: 300;
-    color: rgb(0, 0, 0, 60%);
-    padding: 0.2em 0.5em;
-    background-color: rgb(255, 255, 255, 30%);
-    border-radius: 50%;
-    position: absolute;
-    left: 10px;
-    cursor: default;
-    z-index: 10;
+.popup-close {
+  font-family: "Rubik", sans-serif;
+  font-weight: 300;
+  color: rgb(0, 0, 0, 60%);
+  padding: 0.2em 0.5em;
+  background-color: rgb(255, 255, 255, 30%);
+  border-radius: 50%;
+  position: absolute;
+  left: 10px;
+  cursor: default;
+  z-index: 10;
 }
 
-.popup-msg{
-    font-family: 'Rubik', sans-serif;
-    padding-left: 30px;
+.popup-msg {
+  font-family: "Rubik", sans-serif;
+  padding-left: 30px;
 }
 
 .container {
@@ -68,25 +67,25 @@ body {
   display: flex;
   gap: 1.5em;
   flex-direction: row;
-  position: relative;
   padding: 4em 1.5em 2em 1.5em;
   height: 40em;
   width: 90%;
-  background-color: rgba(255, 220, 220, 0.4);
+  background-color: rgba(231, 255, 220, 0.534);
   border-radius: 30px;
   -webkit-backdrop-filter: blur(15px);
   backdrop-filter: blur(15px);
-  border: 3px solid rgba(255, 255, 255, 0.2);
+  border: 3px solid rgba(231, 255, 220, 0.534);
   overflow: hidden;
   transition: height 0.5s ease-in-out;
+  position: relative;
 }
 
-.box.login{
-    height: 40em;
+.box.login {
+  height: 40em;
 }
 
-.box.register{
-    height: 48em;
+.box.register {
+  height: 48em;
 }
 
 .box-login {
@@ -101,30 +100,30 @@ body {
 }
 
 .box.login .box-login {
-    transform: translateX(0);
+  transform: translateX(0);
 }
 
 .box.register .box-login {
-    transform: translateX(-110%);
+  transform: translateX(-110%);
 }
 
 .box-register {
-    position: absolute;
-    width: 85%;
-    right: 0;
-    left: 0;
-    margin-left: auto;
-    margin-right: auto;
-    transform: translateX(110%);
-    transition: transform 0.5s ease-in-out;
+  position: absolute;
+  width: 85%;
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  transform: translateX(110%);
+  transition: transform 0.5s ease-in-out;
 }
 
 .box.login .box-register {
-    transform: translateX(110%);
+  transform: translateX(110%);
 }
 
 .box.register .box-register {
-    transform: translateX(0);
+  transform: translateX(0);
 }
 
 .top-header {
@@ -138,6 +137,7 @@ body {
 }
 
 .link-home {
+  /* position: relative; */
   text-decoration: none;
   display: inline-block;
   color: #073f11;
@@ -147,6 +147,7 @@ body {
   background-color: rgb(255, 255, 255, 20%);
   padding: 0.01em 0.3em;
   transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+  /* margin-top: 1em; */
 }
 
 .link-home:hover {
@@ -178,8 +179,8 @@ body {
   outline: none;
 }
 
-.input-field:has(.text-error) > .input-box{
-    border: 1px solid rgb(198, 19, 19);
+.input-field:has(.text-error) > .input-box {
+  border: 1px solid rgb(198, 19, 19);
 }
 
 .input-field label {
@@ -190,14 +191,14 @@ body {
 
 .input-box:not(:placeholder-shown) ~ label,
 .input-box:focus ~ label {
-    top: 2px !important;
-    font-size: 10px !important;
-    font-weight: 500;
+  top: 2px !important;
+  font-size: 10px !important;
+  font-weight: 500;
 }
 
 .input-box:placeholder-shown ~ label {
-    top: 15px;
-    font-size: 15px;
+  top: 15px;
+  font-size: 15px;
 }
 
 .input-box:focus:valid ~ label {
@@ -208,12 +209,12 @@ body {
   color: #c12828;
 }
 
-.text-error{
-    position: absolute;
-    right: 10px;
-    bottom: 0;
-    font-size: 12px;
-    color: rgb(198, 19, 19);
+.text-error {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  font-size: 12px;
+  color: rgb(198, 19, 19);
 }
 
 .eye-area {
@@ -261,15 +262,15 @@ i {
   font-weight: 500;
   border: none;
   border-radius: 10px;
-  background-color: rgb(58, 233, 73);
-  color: #524b4b;
+  background-color: #2b2b2b;
+  color: #ffffff;
   box-shadow: 0px 4px 20px rgba(62, 9, 9, 0.145);
   cursor: pointer;
   transition: background-color 0.4s, box-shadow 0.4s;
 }
 .input-submit:hover {
-  background-color: #35f145;
-  color: #353434;
+  background-color: #2b2b2bd5;
+  /* color: #353434; */
   box-shadow: 0px 4px 20px rgba(62, 9, 9, 0.32);
 }
 .forgot {
@@ -286,8 +287,8 @@ i {
   display: flex;
   position: absolute;
   bottom: 50px;
-  left: 25px;
-  width: 85%;
+  left: 30px;
+  width: 90%;
   height: 50px;
   background: rgba(255, 255, 255, 0.16);
   backdrop-filter: blur(10px);
@@ -314,19 +315,44 @@ i {
   transform: translateX(-50%);
   width: 50%;
   height: 100%;
-  background: #cccccd;
+  background: rgb(226, 104, 104);
   border-radius: 10px;
   box-shadow: 2px 0px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.5s ease-in-out;
 }
 
 .box.login .switch-active {
-    transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 
 .box.register .switch-active {
-    transform: translateX(50%);
+  transform: translateX(50%);
 }
+
+/* -------------------------------------------------------- */
+.logo {
+  position: absolute;
+  width: 100%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  height: fit-content;
+  transition: transform 0.2s;
+  font-size: 1rem;
+  transition: filter 0.3s;
+  opacity: 0.3;
+}
+
+.box-login:focus .logo {
+    filter: drop-shadow(1px 1px 10px rgba(0, 0, 0, 50%));
+}
+
+.remember label{
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* ------------------------------------------------------------ */
 
 @media (min-width: 26em) {
   .box {
