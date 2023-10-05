@@ -10,13 +10,22 @@ class Home extends Controller
 
     public function index(): void
     {
-        $members = $this->loadData();
-        $data = ["members" =>  $members];
+        $data = $this->loadData();
         $this->view('home', $data);
     }
 
     private function loadData(): array
     {
-        return [];
+        $post = new Post();
+        $posts = $post->getPosts();
+        $data["posts"] = $posts;
+
+        $category = new PostCategory();
+        $data['categories'] = $category->selectAll();
+
+        $type = new PostType();
+        $data["types"] = $type->selectAll();
+
+        return $data;
     }
 }
