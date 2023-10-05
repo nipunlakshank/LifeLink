@@ -14,13 +14,13 @@
 }
 
 .disc {
-    max-height: 150px;
+    max-height: 7rem;
     overflow: hidden;
     transition: max-height .7s ease-in-out;
 }
 
 .disc2 {
-    max-height: 700px;
+    max-height: 50rem;
     overflow-x: scroll;
     transition: max-height .7s ease-in-out;
 }
