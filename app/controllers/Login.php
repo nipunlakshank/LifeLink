@@ -24,7 +24,7 @@ class Login extends Controller
         $data = [];
         $user = new User();
         if ($user->validate($_POST)) {
-            $row = $user->selectOne(['email' => $_POST['email']]);
+            $row = $user->selectOne(['username' => $_POST['username']]);
 
             if ($row) {
                 $matched = password_verify($_POST['password'], $row->password);
@@ -33,7 +33,7 @@ class Login extends Controller
                     AUTH::authenticate($row);
                     redirect('home');
                 }
-                $data['errors'] = ['email' => 'Wrong email or password', 'password' => ' '];
+                $data['errors'] = ['username' => 'Wrong username or password', 'password' => ' '];
             }
         } else {
             $data['errors'] = $user->get_errors();
