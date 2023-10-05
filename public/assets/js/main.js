@@ -88,3 +88,9 @@ async function addNewPost(){
 
 formSubmit.addEventListener('click', () => addNewPost())
 
+const quill = new Quill("#editor", {
+  placeholder: "Start a post...",
+  theme: "snow", // or 'bubble'
+});
+
+const quillContent = quill.root.innerHTML;
