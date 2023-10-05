@@ -17,7 +17,7 @@
     <!-- JS -->
     <script defer src="<?= PUBLIC_ROOT ?>/assets/js/login.js"></script>
 
-    <title>Login | Lifelink</title>
+    <title><?= $this->title ?> | <?= APP_NAME ?></title>
 
 </head>
 
@@ -25,8 +25,8 @@
 
     <?php $this->view('includes/popup') ?>
 
-    <div class="container <?= $page ?>">
-        <div class="box ">
+    <div class="container">
+        <div class="box <?= $form ?>">
             <img class="logo" src="<?= APP_LOGO2 ?>" role="logo" alt="<?= APP_NAME ?>">
 
             <!--- Login Section --->
@@ -73,7 +73,7 @@
             </div>
 
             <!---- Registeration Section--->
-            <div class="box-register">
+            <div class="box-register" aria-disabled="true">
                 <form action="<?= ROOT ?>/login" method="post" id="form-register">
                     <input type="hidden" name="form" value="register">
                     <div class="top-header">
@@ -96,17 +96,17 @@
                             <?php endif; ?>
                         </div>
                         <div class="input-field">
-                            <input type="email" class="input-box" name="reg_email" value="<?= get_value('reg_email') ?>" id="regEmail" placeholder=" " required>
+                            <input type="email" class="input-box" name="email" value="<?= get_value('email') ?>" id="regEmail" placeholder=" " required>
                             <label for="regEmail">Email</label>
-                            <?php if (!empty($errors['reg_email'])) : ?>
-                                <span class="text-error"><?= $errors['reg_email'] ?></span>
+                            <?php if (!empty($errors['email'])) : ?>
+                                <span class="text-error"><?= $errors['email'] ?></span>
                             <?php endif; ?>
                         </div>
                         <div class="input-field">
-                            <input type="username" class="input-box" name="username" value="<?= get_value('username') ?>" id="username" placeholder=" " required>
-                            <label for="username">Username</label>
-                            <?php if (!empty($errors['username'])) : ?>
-                                <span class="text-error"><?= $errors['username'] ?></span>
+                            <input type="text" class="input-box" name="new_username" value="<?= get_value('new_username') ?>" id="new_username" placeholder=" " required>
+                            <label for="new_username">Username</label>
+                            <?php if (!empty($errors['new_username'])) : ?>
+                                <span class="text-error"><?= $errors['new_username'] ?></span>
                             <?php endif; ?>
                         </div>
                         <div class="input-field">
@@ -144,8 +144,8 @@
 
         <!---- Switch --->
         <div class="switch">
-            <a href="#" class="switch-login" onclick="switchForm(1)">Login</a>
-            <a href="#" class="switch-register" onclick="switchForm(2)">Register</a>
+            <a href="#" class="switch-login" tabindex="0" onclick="switchForm(1)">Login</a>
+            <a href="#" class="switch-register" tabindex="0" onclick="switchForm(2)">Register</a>
             <div class="switch-active"></div>
         </div>
 
