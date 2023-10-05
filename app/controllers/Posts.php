@@ -16,6 +16,7 @@ class Posts extends Controller
         }
 
         $data = json_decode(file_get_contents('php://input'), true);
+        // $data["description"] = esc($data["description"]);
         $post = new Post();
         $insert_id = $post->insert($data);
 

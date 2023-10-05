@@ -25,15 +25,11 @@
                         <div class="position-relative text-start" style="font-size: 13px;">
                             <div class="disc m-0 ji-center my-1" id="see_all">
                                 <?php if (Auth::logged_in()) : ?>
-                                    <p class="opacity-75 m-0">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium a corporis numquam corrupti ipsa rerum voluptatum, laboriosam ducimus, vero sunt voluptatibus architecto ipsum unde, animi repellat sit eos quibusdam modi! Eum alias vitae fuga ab nesciunt aspernatur excepturi distinctio fugiat iure, temporibus culpa tempore sequi. Aperiam sequi praesentium magnam accusamus facilis quae voluptatum tenetur voluptatem hic aut, laborum ad nihil. Incidunt eveniet est reiciendis expedita modi maiores tempore commodi, voluptate, quas nostrum qui quae dolores a eius quod omnis ex quo aspernatur, distinctio ipsa velit porro? Fugiat harum nostrum in inventore rerum incidunt quisquam dolores ea expedita. Eius enim ea ex necessitatibus vero iure quod iusto perferendis natus impedit? Voluptas vero autem eveniet assumenda harum deleniti ipsa error unde, quaerat quia, molestiae similique qui? Numquam, porro temporibus. Ea error omnis sit? Possimus quod neque corrupti repellat magnam suscipit, voluptatibus fugiat quam ea tempore vel inventore velit laboriosam non quidem pariatur dolorum. Eum, autem numquam incidunt nobis eius delectus quam dolorum quidem iure, voluptatibus optio qui quos dignissimos quibusdam doloribus itaque sequi? Laudantium facere maxime soluta nihil cupiditate saepe nisi repellat minima, ut libero harum commodi quo repudiandae voluptatem corporis? Minima adipisci quaerat similique ad ducimus tenetur neque perspiciatis aspernatur accusamus?<?= Auth::getBio() ?></p>
+                                    <p class="opacity-75 m-0"><?= Auth::getBio() ?></p>
                                 <?php else : ?>
                                     <a href="<?= ROOT ?>/login" class="btn btn-primary d-block">Log In</a>
                                 <?php endif; ?>
                             </div>
-                            <?php if (Auth::logged_in()) : ?>
-                                <span class="see_more m-0" onclick="see_more();" id="show_more">Read more</span>
-                                <span class="see_more m-0 d-none" onclick="see_more();" id="show_less">Show less</span>
-                            <?php endif; ?>
                         </div>
                         <hr>
                         <?php if (Auth::logged_in()) : ?>
@@ -73,8 +69,7 @@
                     <div class="border border-1 shadow shadow-sm rounded-3 mb-4">
                         <div class="p-3 position-relative">
 
-                            <div id="editor" class="rounded-bottom">
-                            </div>
+                            <div id="editor" class="rounded-bottom"></div>
                             <!-- <textarea class="form-control" placeholder="Start a post" name="" id="" cols="30" rows="6" style="outline: none;"></textarea> -->
                             <div class="mt-3 w-100">
                                 <div class="row">
@@ -117,18 +112,23 @@
                                             <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="" class="img-fluid">
                                         </div>
                                         <div class=" ps-2">
-                                            <p class="m-0 fw-bold" style="font-size: 15px;"><?= Auth::getFname() ?> <?= Auth::getLname() ?></p>
-                                            <p class="m-0" style="font-size: 12px;"><?= Auth::getUsername() ?></p>
+                                            <p class="m-0 fw-bold" style="font-size: 15px;"><?= $post->name ?></p>
+                                            <p class="m-0" style="font-size: 12px;"><?= $post->username ?></p>
                                         </div>
                                     </div>
 
                                     <div class="text-end">
-                                        <span class="pointer" style="font-size: 12px;"><i class="fa-regular fa-pen-to-square pe-1"></i>Edit</span>
+                                        <?php if (Auth::logged_in()) : ?>
+                                            <span class="pointer" style="font-size: 12px;"><i class="fa-regular fa-pen-to-square pe-1"></i>Edit</span>
+                                        <?php endif; ?>
                                         <p class="m-0 opacity-75" style="font-size: 12px;"><?= $post->time_diff ?></p>
                                     </div>
                                 </div>
-                                <div class="position-relative mt-2 disc1" style="font-size: 14px;" id="see_all_post">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent metus quam, faucibus id pulvinar et, placerat ac urna. Donec laoreet mollis lacus, sed dignissim nulla mollis a. Quisque tempor fermentum massa, at porta nibh vulputate at. Phasellus placerat, quam eget fringilla sodales, leo sem accumsan metus, a scelerisque ante metus et odio. Maecenas consectetur ipsum tortor, et rhoncus eros maximus eu. Fusce luctus neque ac ipsum porttitor faucibus. Nullam eget mauris ligula. Curabitur iaculis commodo libero at ultrices. Proin at libero enim. Cras ac libero a libero consequat porttitor sit amet a metus. Curabitur in sodales diam. Etiam dictum efficitur arcu sed interdum. Suspendisse in tellus quis tortor congue lobortis quis at lectus. Aenean aliquam a tellus nec luctus. Fusce faucibus finibus enim, vel convallis est finibus et.
-                                    <span onclick="see_more_post();" class=" pointer position-absolute " id="see_all_post1" style="right: 0; bottom: 5px;  background-color: #FFFFFF; color: #378FE9; ">...see more</span>
+                                <div class="position-relative mt-2 disc1" style="font-size: 14px;" id="see_all_post-<?= $post->id ?>">
+                                    <?= $post->description ?>
+                                    <?php if (strlen($post->description) > 50) : ?>
+                                        <span onclick="see_more_post(<?= $post->id ?>);" class=" pointer position-absolute " id="see_all_post1-<?= $post->id ?>" style="right: 0; bottom: 5px;  background-color: #FFFFFF; color: #378FE9; ">...see more</span>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="col-12 position-relative mt-2" style="height: auto;">
                                     <img src="https://img.freepik.com/free-photo/woman-sitting-grass-checking-her-phone_23-2148739296.jpg" alt="" style="width: 100%;">

@@ -47,6 +47,10 @@ class Post extends Model
                 $comm->time_diff = $this->getTime($comm->created_at);
             }
 
+            $posted_user = $user->selectOne(["id" => $post->users_id]);
+            $post->name = "$posted_user->fname $posted_user->lname";
+            $post->username = $posted_user->username;
+
             $post->time_diff = $this->getTime($post->created_at);
             $post->comments = $comments;
 
