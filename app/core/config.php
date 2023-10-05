@@ -52,7 +52,7 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
    define("DB_HOST", "https://nerdtechlk.com");
    define("DB_NAME", "id21316345_lifelink_db");
    define("DB_USER", "id21316345_user");
-   define("DB_PASSWORD", "jepvuq-hikbEv-gywxe6");
+   define("DB_PASSWORD", "jepvuq");
    define("DB_DRIVER", "mysql");
 }
 

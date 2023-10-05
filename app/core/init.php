@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once "config.php";
 require_once "functions.php";
 require_once "database.php";
@@ -12,5 +14,3 @@ require_once "app/util/mail.php";
 spl_autoload_register(function ($class_name) {
     require_once "app/models/$class_name.php";
 });
-
-session_start();
