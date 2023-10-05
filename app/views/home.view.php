@@ -121,43 +121,41 @@
                                             <p class="m-0" style="font-size: 12px;"><?= Auth::getUsername() ?></p>
                                         </div>
                                     </div>
-                                    <p class="m-0 opacity-75" style="font-size: 12px;"><?= $post->time_diff ?></p>
-                                </div>
 
-                                <div class="text-end">
-                                    <span class="pointer" style="font-size: 12px;"><i class="fa-regular fa-pen-to-square pe-1"></i>Edit</span>
-                                    <p class="m-0 opacity-75" style="font-size: 12px;">2 days ago</p>
+                                    <div class="text-end">
+                                        <span class="pointer" style="font-size: 12px;"><i class="fa-regular fa-pen-to-square pe-1"></i>Edit</span>
+                                        <p class="m-0 opacity-75" style="font-size: 12px;"><?= $post->time_diff ?></p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="position-relative mt-2 disc1" style="font-size: 14px;" id="see_all_post">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent metus quam, faucibus id pulvinar et, placerat ac urna. Donec laoreet mollis lacus, sed dignissim nulla mollis a. Quisque tempor fermentum massa, at porta nibh vulputate at. Phasellus placerat, quam eget fringilla sodales, leo sem accumsan metus, a scelerisque ante metus et odio. Maecenas consectetur ipsum tortor, et rhoncus eros maximus eu. Fusce luctus neque ac ipsum porttitor faucibus. Nullam eget mauris ligula. Curabitur iaculis commodo libero at ultrices. Proin at libero enim. Cras ac libero a libero consequat porttitor sit amet a metus. Curabitur in sodales diam. Etiam dictum efficitur arcu sed interdum. Suspendisse in tellus quis tortor congue lobortis quis at lectus. Aenean aliquam a tellus nec luctus. Fusce faucibus finibus enim, vel convallis est finibus et.
-                                <span onclick="see_more_post();" class=" pointer position-absolute " id="see_all_post1" style="right: 0; bottom: 5px;  background-color: #FFFFFF; color: #378FE9; ">...see more</span>
-                            </div>
-                            <!-- <div class="mt-2" style="font-size: 14px;">
+                                <div class="position-relative mt-2 disc1" style="font-size: 14px;" id="see_all_post">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent metus quam, faucibus id pulvinar et, placerat ac urna. Donec laoreet mollis lacus, sed dignissim nulla mollis a. Quisque tempor fermentum massa, at porta nibh vulputate at. Phasellus placerat, quam eget fringilla sodales, leo sem accumsan metus, a scelerisque ante metus et odio. Maecenas consectetur ipsum tortor, et rhoncus eros maximus eu. Fusce luctus neque ac ipsum porttitor faucibus. Nullam eget mauris ligula. Curabitur iaculis commodo libero at ultrices. Proin at libero enim. Cras ac libero a libero consequat porttitor sit amet a metus. Curabitur in sodales diam. Etiam dictum efficitur arcu sed interdum. Suspendisse in tellus quis tortor congue lobortis quis at lectus. Aenean aliquam a tellus nec luctus. Fusce faucibus finibus enim, vel convallis est finibus et.
+                                    <span onclick="see_more_post();" class=" pointer position-absolute " id="see_all_post1" style="right: 0; bottom: 5px;  background-color: #FFFFFF; color: #378FE9; ">...see more</span>
+                                </div>
+                                <!-- <div class="mt-2" style="font-size: 14px;">
                                 For decades, math has been widely cited as Americans' least favorite subject, and algebra is the most frequently failed high school course in the country. But perhaps the problem isn’t that students can’t keep up with what they learn
                             </div> -->
-                            <div class="col-12 position-relative mt-2" style="height: auto;">
-                                <img src="https://img.freepik.com/free-photo/woman-sitting-grass-checking-her-phone_23-2148739296.jpg" alt="" style="width: 100%;">
-                            </div>
-                            <hr>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="ji-center">
-                                    <p class="me-4 m-0 ji-center pointer" style="font-size: 20px;">
-                                        <!-- <i class="opacity-50 fa-solid fa-thumbs-up pe-2"></i> -->
-                                        <i class="fa-solid fa-thumbs-up pe-2" style="color: #378FE9;"></i>
-                                        <span class="flex_lg" style="font-size: 13px;">Upvote</span>
-                                    </p>
-                                    <p class="me-4 m-0 ji-center pointer" style="font-size: 20px;">
-                                        <!-- <i class="opacity-50 fa-solid fa-thumbs-up fa-rotate-180 ps-2"></i> -->
-                                        <i class="fa-solid fa-thumbs-up fa-rotate-180 ps-2" style="color: #ff906c;"></i>
-                                        <span class="flex_lg" style="font-size: 13px;">Downvote</span>
-                                    </p>
-                                    <p onclick="open_chat(<?= $post->id ?>);" class="me-4 m-0 ji-center pointer" style="font-size: 20px;"><i class="opacity-50 fa-solid fa-message pe-2"></i><span class="flex_lg" style="font-size: 13px;">Comment</span></p>
-                                </div>
-                                <div class="">
-                                    <span class="opacity-75 pe-3" style="font-size: 13px;">7 upvote</span>
-                                    <span class="opacity-75" style="font-size: 13px;">3 downvote</span>
+                                <div class="col-12 position-relative mt-2" style="height: auto;">
+                                    <img src="https://img.freepik.com/free-photo/woman-sitting-grass-checking-her-phone_23-2148739296.jpg" alt="" style="width: 100%;">
                                 </div>
                                 <hr>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="ji-center">
+                                        <p class="me-4 m-0 ji-center pointer" style="font-size: 20px;">
+                                            <!-- <i class="opacity-50 fa-solid fa-thumbs-up pe-2"></i> -->
+                                            <i class="fa-solid fa-thumbs-up pe-2" style="color: #378FE9;"></i>
+                                            <span class="flex_lg" style="font-size: 13px;">Upvote</span>
+                                        </p>
+                                        <p class="me-4 m-0 ji-center pointer" style="font-size: 20px;">
+                                            <!-- <i class="opacity-50 fa-solid fa-thumbs-up fa-rotate-180 ps-2"></i> -->
+                                            <i class="fa-solid fa-thumbs-up fa-rotate-180 ps-2" style="color: #ff906c;"></i>
+                                            <span class="flex_lg" style="font-size: 13px;">Downvote</span>
+                                        </p>
+                                        <p onclick="open_chat(<?= $post->id ?>);" class="me-4 m-0 ji-center pointer" style="font-size: 20px;"><i class="opacity-50 fa-solid fa-message pe-2"></i><span class="flex_lg" style="font-size: 13px;">Comment</span></p>
+                                    </div>
+                                    <div class="">
+                                        <span class="opacity-75 pe-3" style="font-size: 13px;">7 upvote</span>
+                                        <span class="opacity-75" style="font-size: 13px;">3 downvote</span>
+                                    </div>
+                                </div>
                                 <div class="py-4 d-none" id="chat_div-<?= $post->id ?>">
                                     <div class="ji-center col-12 position-relative">
                                         <div class="position-relative rounded rounded-circle" style="width: 45px; height: 45px;">
@@ -182,12 +180,6 @@
                                                         </div>
                                                     </div>
                                                     <div class="ps-1 col-lg-11 col-md-11 col-sm-10">
-                                                        <div class="p-3 pt-2 pb-2 mb-3" style="background-color: #f2f2f2; border-radius: 0 9px 9px 9px;">
-                                                            <div class="d-flex justify-content-between align-items-center">
-                                                                <p class="fw-bold opacity-75 m-0" style="font-size: 15px;">Bryan D.</p>
-                                                                <p class="opacity-75 m-0" style="font-size: 11px;">11 JUL 2023</p>
-                                                            </div>
-                                                        </div>
                                                         <div class="ps-1 col-lg-11 col-md-11 col-sm-10">
                                                             <div class="p-3 pt-2 pb-2 mb-3" style="background-color: #f2f2f2; border-radius: 0 9px 9px 9px;">
                                                                 <div class="d-flex justify-content-between align-items-center">
