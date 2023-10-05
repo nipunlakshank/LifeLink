@@ -27,12 +27,8 @@
     <?php $this->view('includes/popup') ?>
 
     <div class="container login">
-        <a href="../.." class='logo'>
-            <img src="<?= APP_LOGO2 ?>" role="logo" alt="<?= APP_NAME ?>">
-        </a>
         <div class="box ">
-
-
+            <img class="logo" src="<?= APP_LOGO2 ?>" role="logo" alt="<?= APP_NAME ?>">
 
             <!--- Login Section --->
             <div class="box-login active">
