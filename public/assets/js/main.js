@@ -57,3 +57,10 @@ function name_edit2() {
   var bio_edit = document.getElementById("bio_edit");
   bio_edit.classList.toggle("d-none");
 }
+
+var quill = new Quill("#editor", {
+  placeholder: "Start a post...",
+  theme: "snow", // or 'bubble'
+});
+
+var quillContent = quill.root.innerHTML;
