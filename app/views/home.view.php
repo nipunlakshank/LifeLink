@@ -39,19 +39,19 @@
                         <?php if (Auth::logged_in()) : ?>
                             <div class="row">
                                 <div class="col d-flex justify-content-between align-items-center">
-                                    <input id="mobile" type="text" class="col-10 opacity-75" readonly value="0757033713" style="font-size: 14px; border: none;">
+                                    <input id="mobile" type="text" class="col-10 opacity-75" readonly value="<?= Auth::getMobile() ?>" style="font-size: 14px; border: none;">
                                     <i class="fa-regular fa-pen-to-square col-2 pointer" onclick="open_edit1();" id="edit_icn1"></i>
                                     <button class="btn btn-primary btn-sm ms-1 d-none" style="font-size: 13px;" id="update_icon1">update</button>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col d-flex justify-content-between align-items-center">
-                                    <input id="mobile" type="text" class="col-10 opacity-75" readonly value="chathurangakosala65@gmail.com" style="font-size: 14px; border: none;">
+                                    <input id="mobile" type="text" class="col-10 opacity-75" readonly value="<?= Auth::getEmail() ?>" style="font-size: 14px; border: none;">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col d-flex justify-content-between align-items-center">
-                                    <input id="mobile" type="text" class="col-10 opacity-75" readonly value="@kosala541" style="font-size: 14px; border: none;">
+                                    <input id="mobile" type="text" class="col-10 opacity-75" readonly value="<?= Auth::getUsername() ?>" style="font-size: 14px; border: none;">
                                 </div>
                             </div>
                         <?php endif; ?>
