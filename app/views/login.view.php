@@ -16,15 +16,19 @@
     <!-- JS -->
     <script defer src="<?= PUBLIC_ROOT ?>/assets/js/login.js"></script>
 
+
+
     <title>Login | Gift Zone</title>
+
 </head>
 
 <body>
 
     <?php $this->view('includes/popup') ?>
 
-    <div class="container">
-        <div class="box <?= $form ?>">
+    <div class="container login">
+        <div class="box ">
+            <img class="logo" src="<?= APP_LOGO2 ?>" role="logo" alt="<?= APP_NAME ?>">
 
             <!--- Login Section --->
             <div class="box-login active">
@@ -138,6 +142,7 @@
             <a href="#" class="switch-register" onclick="switchForm(2)">Register</a>
             <div class="switch-active"></div>
         </div>
+
 
     </div>
 

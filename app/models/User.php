@@ -15,13 +15,13 @@ class User extends Model
         'password',
     ];
     protected array $select_columns = [
-        'id',
-        'fname',
-        'lname',
-        'email',
-        'password',
-        'mobile',
-        'dob',
+        'iduser',
+        'usercol_fname',
+        'usercol_lname',
+        'usercol_mobile',
+        'usercol_email',
+        'usercol_username',
+        'usercol_dp_path',
         'role',
     ];
 
