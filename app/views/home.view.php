@@ -62,17 +62,17 @@
                             <input type="text" value="#" class="col-10" style="outline: none; border: none; background-color: #00000000;" placeholder="Search by keyword or tag...">
                         </div>
                         <select id="search_categories" class="form-control select2">
-                            <option value="">Search by category</option>
-                            <option value="">Groceries</option>
-                            <option value="">Medical</option>
-                            <option value="">EmotionalSupport</option>
-                            <option value="">Technical Help</option>
+                            <option value="0">Search by category</option>
+                            <?php foreach ($categories ?? [] as $cat) : ?>
+                                <option value="<?= $cat->id ?>"><?= $cat->name ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                 </div>
                 <div class="col-md-9 col-lg-8">
                     <div class="border border-1 shadow shadow-sm rounded-3 mb-4">
                         <div class="p-3 position-relative">
+
                             <div id="editor" class="rounded-bottom">
                             </div>
                             <!-- <textarea class="form-control" placeholder="Start a post" name="" id="" cols="30" rows="6" style="outline: none;"></textarea> -->
@@ -84,42 +84,46 @@
                                     </div>
                                     <div class="col-lg-6 row mb-4 ji-center">
                                         <div class="col-6">
-                                            <select id="categories" class="form-control select2">
-                                                <option value="">Select post category</option>
-                                                <option value="">Groceries</option>
-                                                <option value="">Medical</option>
-                                                <option value="">EmotionalSupport</option>
-                                                <option value="">Technical Help</option>
+                                            <input type="hidden" value="<?= Auth::getId() ?>" id="user-id" />
+                                            <select id="post-form-category" class="form-control select2" onchange="newPostEditing()">
+                                                <option value="0">Select post category</option>
+                                                <?php foreach ($categories ?? [] as $cat) : ?>
+                                                    <option value="<?= $cat->id ?>"><?= $cat->name ?></option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                         <div class="col-6">
-                                            <select id="help_type" class="select2 form-control">
-                                                <option value="">Offering Help</option>
-                                                <option value="">Need assistance</option>
+                                            <select id="post-form-type" class="select2 form-control">
+                                                <?php foreach ($types ?? [] as $type) : ?>
+                                                    <option value="<?= $type->id ?>"><?= $type->name ?></option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-2 mb-4">
-                                        <button class="btn btn-primary fw-bold col-12" disabled>
-                                            POST
-                                        </button>
+                                        <button class="btn btn-primary fw-bold col-12" id="post-form-btn" disabled="true">POST</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="border border-1 shadow shadow-sm rounded-3 mb-4">
-                        <div class="p-3 position-relative">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="ji-center">
-                                    <div class="position-relative rounded rounded-circle" style="width: 40px; height: 40px;">
-                                        <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="" class="img-fluid">
+
+                    <?php foreach ($posts as $post) : ?>
+                        <div class="border border-1 shadow shadow-sm rounded-3 mb-4">
+                            <div class="p-3 position-relative">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="ji-center">
+                                        <div class="position-relative rounded rounded-circle" style="width: 35px; height: 35px;">
+                                            <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="" class="img-fluid">
+                                        </div>
+                                        <div class=" ps-2">
+                                            <p class="m-0 fw-bold" style="font-size: 15px;"><?= Auth::getFname() ?> <?= Auth::getLname() ?></p>
+                                            <p class="m-0" style="font-size: 12px;"><?= Auth::getUsername() ?></p>
+                                        </div>
                                     </div>
-                                    <div class=" ps-2">
-                                        <p class="m-0 fw-bold" style="font-size: 15px;">Kosala Chathuranga</p>
-                                        <span class="m-0 opacity-75" style="font-size: 12px;">kosala541</span><span class="fw-bold ps-3 opacity-75" style="font-size: 12px;"><i class="fa-solid fa-location-dot pe-1" style="color: #CB1410;"></i>Gampaha, Sri Lanka</span>
-                                    </div>
+                                    <p class="m-0 opacity-75" style="font-size: 12px;"><?= $post->time_diff ?></p>
                                 </div>
+
                                 <div class="text-end">
                                     <span class="pointer" style="font-size: 12px;"><i class="fa-regular fa-pen-to-square pe-1"></i>Edit</span>
                                     <p class="m-0 opacity-75" style="font-size: 12px;">2 days ago</p>
@@ -153,21 +157,34 @@
                                     <span class="opacity-75 pe-3" style="font-size: 13px;">7 upvote</span>
                                     <span class="opacity-75" style="font-size: 13px;">3 downvote</span>
                                 </div>
-                            </div>
-                            <div class="py-4 d-none" id="chat_div">
-                                <div class="ji-center col-12 position-relative">
-                                    <div class="position-relative rounded rounded-circle" style="width: 45px; height: 45px;">
-                                        <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="" class="img-fluid">
+                                <hr>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="ji-center">
+                                        <p class="me-4 m-0 ji-center pointer" style="font-size: 20px;"><i class="opacity-50 fa-solid fa-thumbs-up pe-2"></i><span class="flex_lg" style="font-size: 13px;">Upvote</span></p>
+                                        <p class="me-4 m-0 ji-center pointer" style="font-size: 20px;"><i class="opacity-50 fa-solid fa-thumbs-up fa-rotate-180 ps-2"></i><span class="flex_lg" style="font-size: 13px;">Downvote</span></p>
+                                        <p onclick="open_chat(<?= $post->id ?>);" class="me-4 m-0 ji-center pointer" style="font-size: 20px;"><i class="opacity-50 fa-solid fa-message pe-2"></i><span class="flex_lg" style="font-size: 13px;">Comment</span></p>
                                     </div>
-                                    <textarea class="form-control ms-3 pe-5" name="" id="" cols="30" rows="2"></textarea>
-                                    <div class="ji-center position-absolute" style="right: 13px;">
-                                        <i class="fa-solid fa-paper-plane fs-3 text-primary"></i>
+                                    <div class="">
+                                        <span class="opacity-75 pe-3" style="font-size: 13px;">7 upvote</span>
+                                        <span class="opacity-75" style="font-size: 13px;">3 downvote</span>
                                     </div>
                                 </div>
-                                <div class="position-relative" id="cardContainer">
-                                    <?php
-                                    for ($x = 0; $x < 4; $x++) {
-                                    ?>
+                                <div class="py-4 d-none" id="chat_div-<?= $post->id ?>">
+                                    <div class="ji-center col-12 position-relative">
+                                        <div class="position-relative rounded rounded-circle" style="width: 45px; height: 45px;">
+                                            <?php if (file_exists(SERVER_ROOT . "/public/images/users/" . Auth::getImg())) : ?>
+                                                <img src="<?= PUBLIC_ROOT ?>/assets/images/users/<?= Auth::getImg() ?>" alt="" class="img-fluid">
+                                            <?php else : ?>
+                                                <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" alt="" class="img-fluid">
+                                            <?php endif; ?>
+                                        </div>
+                                        <textarea class="form-control ms-3 pe-5" name="" id="" cols="30" rows="2"></textarea>
+                                        <div class="ji-center position-absolute" style="right: 13px;">
+                                            <i class="fa-solid fa-paper-plane fs-3 text-primary"></i>
+                                        </div>
+                                    </div>
+                                    <div class="position-relative" id="cardContainer">
+
 
                                         <div class="card_div">
                                             <div class="border-bottom mt-4 d-flex">
@@ -181,23 +198,30 @@
                                                             <p class="fw-bold opacity-75 m-0" style="font-size: 15px;">Bryan D.</p>
                                                             <p class="opacity-75 m-0" style="font-size: 11px;">11 JUL 2023</p>
                                                         </div>
-                                                        <div class="m-0">
-                                                            <span class="opacity-75" style="font-size: 14px;">
-                                                                Great work again. Had some problems with the payment process for my website and Mo fixed all the issues in my list. Would highly recommend.
-                                                            </span>
+                                                    </div>
+                                                    <div class="ps-1 col-lg-11 col-md-11 col-sm-10">
+                                                        <div class="p-3 pt-2 pb-2 mb-3" style="background-color: #f2f2f2; border-radius: 0 9px 9px 9px;">
+                                                            <div class="d-flex justify-content-between align-items-center">
+                                                                <p class="fw-bold opacity-75 m-0" style="font-size: 15px;"><?= $comment->name ?></p>
+                                                                <p class="opacity-75 m-0 ps-2" style="font-size: 11px;"><?= $comment->time_diff ?></p>
+                                                            </div>
+                                                            <div class="m-0">
+                                                                <span class="opacity-75" style="font-size: 14px;">
+                                                                    <?= $comment->comment ?>
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    <?php
-                                    }
-                                    ?>
+                                        <?php endforeach; ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
+            <?php endforeach; ?>
+
             </div>
         </div>
     </div>

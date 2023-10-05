@@ -3,6 +3,8 @@
 class Login extends Controller
 {
 
+    protected string $title = "Login";
+
     public function index(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === "POST") {

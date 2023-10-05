@@ -49,10 +49,10 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
    define("PUBLIC_ROOT", ROOT . "/public");
 
    // Database config
-   define("DB_HOST", "localhost");
-   define("DB_NAME", "");
-   define("DB_USER", "");
-   define("DB_PASSWORD", "");
+   define("DB_HOST", "https://nerdtechlk.com");
+   define("DB_NAME", "id21316345_lifelink_db");
+   define("DB_USER", "id21316345_user");
+   define("DB_PASSWORD", "jepvuq-hikbEv-gywxe6");
    define("DB_DRIVER", "mysql");
 }
 
