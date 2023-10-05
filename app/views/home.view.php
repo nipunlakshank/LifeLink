@@ -47,6 +47,19 @@
                 </div>
                 <div class="col-md-9 col-lg-8">
                     <div class="border border-1 shadow shadow-sm rounded-3">
+                        <div class="p-3">
+                            <textarea class="form-control" placeholder="Start a post" name="" id="" cols="30" rows="6" style="outline: none;"></textarea>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div class="ji-center">
+                                    <div class="pointer opacity-75 fw-bold ji-center"><i class="fa-regular fa-image fs-2 pe-2" style="color: #378FE9;"></i>Images</div>
+                                    <div class="pointer opacity-75 fw-bold ji-center ms-5"><i class="fa-solid fa-location-dot fs-2 pe-2" style="color: #CB1410;"></i>Location</div>
+                                </div>
+                                <button class="btn btn-primary fw-bold" disabled>
+                                    POST
+                                </button>
+                            </div>
+
+                        </div>
 
                     </div>
 
