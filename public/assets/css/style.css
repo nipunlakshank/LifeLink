@@ -64,6 +64,13 @@
     border: none !important;
 } */
 
+.upvote .vote.active{
+    color: #378FE9;
+}
+.downvote .vote.active{
+    color: #ff906c;
+}
+
 @media (max-width: 700px) {
     .flex_lg {
         display: none;

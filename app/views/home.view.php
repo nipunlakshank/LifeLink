@@ -30,10 +30,10 @@
                             <div class="disc m-0 ji-center my-1" id="see_all">
                                 <?php if (Auth::logged_in()) : ?>
                                     <p class="opacity-75 m-0" id="user-bio"><?= Auth::getBio() ?></p>
-                                    <p class="fw-bold opacity-75"><?php if(empty(Auth::getBio())): ?>Update bio <?php endif; ?><i class="fa-regular fa-pen-to-square col-2 pointer" onclick="name_edit2();"></i></p>
+                                    <p class="fw-bold opacity-75"><?php if (empty(Auth::getBio())) : ?>Update bio <?php endif; ?><i class="fa-regular fa-pen-to-square col-2 pointer" onclick="name_edit2();"></i></p>
                                     <div id="bio_edit" class="d-none position-absolute border border-1 rounded-3 bg-white col-12 p-3" style="z-index: 9; left: 0;">
                                         <textarea class="form-control mb-3" placeholder="Add Bio" name="" id="user-bio-input" cols="30" rows="2" style="outline: none;"><?= Auth::getBio() ?></textarea>
-                                        <button class="btn btn-primary btn-sm" id="update-bio-btn"><?php if(empty(Auth::getBio())): ?>Add<?php else: ?>Update<?php endif; ?></button>
+                                        <button class="btn btn-primary btn-sm" id="update-bio-btn"><?php if (empty(Auth::getBio())) : ?>Add<?php else : ?>Update<?php endif; ?></button>
                                         <button class="btn btn-danger btn-sm" onclick="name_edit2()">Cancel</button>
                                     </div>
                                 <?php else : ?>
@@ -153,21 +153,19 @@
                                 <hr>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="ji-center">
-                                        <p class="me-4 m-0 ji-center pointer" style="font-size: 20px;">
-                                            <!-- <i class="opacity-50 fa-solid fa-thumbs-up pe-2"></i> -->
-                                            <i class="fa-solid fa-thumbs-up pe-2" style="color: #378FE9;"></i>
+                                        <p class="me-4 m-0 ji-center pointer upvote" style="font-size: 20px;">
+                                            <i id="upvote-<?=$post->id?>" class="fa-solid fa-thumbs-up pe-2 vote<?php if (Auth::logged_in() && !empty($post->vote) && strtolower($post->vote) === "upvote") : ?> active<?php endif; ?>"></i>
                                             <span class="flex_lg" style="font-size: 13px;">Upvote</span>
                                         </p>
-                                        <p class="me-4 m-0 ji-center pointer" style="font-size: 20px;">
-                                            <!-- <i class="opacity-50 fa-solid fa-thumbs-up fa-rotate-180 ps-2"></i> -->
-                                            <i class="fa-solid fa-thumbs-up fa-rotate-180 ps-2" style="color: #ff906c;"></i>
+                                        <p class="me-4 m-0 ji-center pointer downvote" style="font-size: 20px;">
+                                            <i id="downvote-<?=$post->id?>" class="fa-solid fa-thumbs-up fa-rotate-180 ps-2 vote<?php if (Auth::logged_in() && !empty($post->vote) && strtolower($post->vote) === "downvote") : ?> active<?php endif; ?>"></i>
                                             <span class="flex_lg" style="font-size: 13px;">Downvote</span>
                                         </p>
                                         <p onclick="open_chat(<?= $post->id ?>);" class="me-4 m-0 ji-center pointer" style="font-size: 20px;"><i class="opacity-50 fa-solid fa-message pe-2"></i><span class="flex_lg" style="font-size: 13px;">Comment</span></p>
                                     </div>
                                     <div class="">
-                                        <span class="opacity-75 pe-3" style="font-size: 13px;">7 upvote</span>
-                                        <span class="opacity-75" style="font-size: 13px;">3 downvote</span>
+                                        <span class="opacity-75 pe-3" style="font-size: 13px;"><?= $post->upvotes ?> upvote</span>
+                                        <span class="opacity-75" style="font-size: 13px;"><?= $post->downvotes ?> downvote</span>
                                     </div>
                                 </div>
                                 <div class="py-4 d-none" id="chat_div-<?= $post->id ?>">

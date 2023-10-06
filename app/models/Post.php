@@ -59,6 +59,33 @@ class Post extends Model
 
             $postCategory = new PostCategory();
             $post->category = $postCategory->select(["id" => $post->post_categories_id]);
+
+            $postVote = new PostVote();
+            $votes = $postVote->selectOne(["posts_id" => $post->id, "users_id" => $post->users_id]) ?? [];
+            $vote = new Vote();
+
+            $upvotes = 0;
+            $downvotes = 0;
+
+            foreach($votes as $v){
+                $v_name = $vote->selectOne(["id" => $v->id])?->name;
+                if(strtolower($v_name) === "upvote"){
+                    $upvotes += 1;
+                }else if(strtolower(($v_name) === "downvote")){
+                    $downvotes += 1;
+                }
+            }
+
+            $post->upvotes = $upvotes;
+            $post->downvotes = $downvotes;
+
+            $user_vote = $postVote->selectOne(["posts_id" => $post->id, "users_id" => Auth::getId()]);
+            if(!empty($user_vote)){
+                $vote_id = $user_vote->votes_id;
+                $vote_name = $vote->selectOne(["id" => $vote_id]);
+                $post->vote = $vote_name->name;
+            }
+
         }
         return $posts;
     }

@@ -187,7 +187,7 @@ btnNameUpdate.addEventListener('click', async () => {
 })
 
 btnBioUpdate.addEventListener('click', async () => {
-    const res = await postData("/users/update", { id: userId.value, bio: userBioInput.value})
+    const res = await postData("/users/update", { id: userId.value, bio: userBioInput.value })
     if (!res.success) {
         alert("Something went wrong!")
         return
@@ -197,4 +197,39 @@ btnBioUpdate.addEventListener('click', async () => {
     userBioInput.value = res.bio
 
     name_edit2()
+})
+
+const upvotes = document.querySelectorAll(".upvote .vote")
+const downvotes = document.querySelectorAll(".downvote .vote")
+
+function toggleVoteup(vote) {
+    const id = vote.id.replace(/^\D+/g, '')
+    const altVote = document.getElementById(`downvote-${id}`)
+
+    if(vote.classList.contains('active')){
+        vote.classList.remove('active')
+        return
+    }
+    vote.classList.add('active')
+    altVote.classList.remove('active')
+}
+
+function toggleVotedown(vote) {
+    const id = vote.id.replace(/^\D+/g, '')
+    const altVote = document.getElementById(`upvote-${id}`)
+
+    if(vote.classList.contains('active')){
+        vote.classList.remove('active')
+        return
+    }
+    vote.classList.add('active')
+    altVote.classList.remove('active')
+}
+
+upvotes.forEach(vote => {
+    vote.addEventListener("click", () => toggleVoteup(vote))
+})
+
+downvotes.forEach(vote => {
+    vote.addEventListener("click", () => toggleVotedown(vote))
 })
