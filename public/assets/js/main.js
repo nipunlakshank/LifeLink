@@ -181,6 +181,9 @@ btnNameUpdate.addEventListener('click', async () => {
     alert("Details updated!")
     userFname.value = res.fname
     userLname.value = res.lname
+    document.querySelector('.user-name').innerText = `${res.fname} ${res.lname}`
+
+    name_edit1()
 })
 
 btnBioUpdate.addEventListener('click', async () => {
@@ -190,6 +193,8 @@ btnBioUpdate.addEventListener('click', async () => {
         return
     }
     alert("Details updated!")
-    userBio.value = res.bio
+    userBio.innerHTML = res.bio
     userBioInput.value = res.bio
+
+    name_edit2()
 })

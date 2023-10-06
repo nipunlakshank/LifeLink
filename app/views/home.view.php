@@ -19,7 +19,7 @@
                                 <?php endif; ?>
                             </div>
                         </div>
-                        <span class="fw-bold opacity-75"><?php if (Auth::logged_in()) : ?><?= Auth::getFname() ?> <?= Auth::getLname() ?><?php else : ?>Guest<?php endif; ?><i class="fa-regular fa-pen-to-square col-1 pointer" onclick="name_edit1();"></i></span>
+                        <span class="fw-bold opacity-75"><span class="user-name"><?php if (Auth::logged_in()) : ?><?= Auth::getFname() ?> <?= Auth::getLname() ?><?php else : ?>Guest<?php endif; ?></span><i class="fa-regular fa-pen-to-square col-1 pointer" onclick="name_edit1();"></i></span>
                         <div id="name_edit" class="d-none position-absolute border border-1 rounded-3 bg-white col-12 p-3" style="z-index: 9; left: 0;">
                             <input type="text" value="<?= Auth::getFname() ?>" id="user-fname" class="form-control mb-2" placeholder="First name">
                             <input type="text" value="<?= Auth::getLname() ?>" id="user-lname" class="form-control mb-3" placeholder="Last name">
