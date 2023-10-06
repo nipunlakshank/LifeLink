@@ -17,6 +17,15 @@ class Auth
         }
     }
 
+    public static function update_session(): void
+    {
+        if(!self::logged_in()){
+            return;
+        }
+        $user = new User();
+        $_SESSION["USER_DATA"] = $user->selectOne(["id" => self::getId()]);
+    }
+
     public static function logout(): void
     {
         if (!empty($_SESSION['USER_DATA'])) {

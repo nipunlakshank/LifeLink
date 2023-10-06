@@ -25,6 +25,7 @@ function validate_session(): void
     if (!Auth::logged_in()) return;
     if (!empty($_SESSION['exp']) && $_SESSION['exp'] > time()) {
         $_SESSION['exp'] += intval(SESSION_LIFETIME);
+        Auth::update_session();
         return;
     }
     Auth::logout();

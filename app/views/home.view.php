@@ -12,24 +12,28 @@
                                     <img src="<?= PUBLIC_ROOT ?>/assets/images/users/<?= Auth::getImg() ?>" class="img-fluid" alt="Profile Picture">
                                 <?php else : ?>
                                     <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" class="img-fluid" alt="Profile Picture">
+                                    <label for="dp_img" class="pointer position-absolute rounded rounded-circle bg-dark ji-center text-light" style="top: 3px; right: 0; width: 20px; height: 20px;">
+                                        <i class="fa-regular fa-pen-to-square" style="font-size: 12px;" onclick="change_dp();"></i>
+                                    </label>
+                                    <input type="file" class="d-none" id="dp_img">
                                 <?php endif; ?>
                             </div>
                         </div>
                         <span class="fw-bold opacity-75"><?php if (Auth::logged_in()) : ?><?= Auth::getFname() ?> <?= Auth::getLname() ?><?php else : ?>Guest<?php endif; ?><i class="fa-regular fa-pen-to-square col-1 pointer" onclick="name_edit1();"></i></span>
                         <div id="name_edit" class="d-none position-absolute border border-1 rounded-3 bg-white col-12 p-3" style="z-index: 9; left: 0;">
-                            <input type="text" value="Kosala" class="form-control mb-2" placeholder="First name">
-                            <input type="text" value="Chathuranga" class="form-control mb-3" placeholder="Last name">
-                            <button class="btn btn-primary btn-sm">Update</button>
+                            <input type="text" value="<?= Auth::getFname() ?>" id="user-fname" class="form-control mb-2" placeholder="First name">
+                            <input type="text" value="<?= Auth::getLname() ?>" id="user-lname" class="form-control mb-3" placeholder="Last name">
+                            <button class="btn btn-primary btn-sm" id="update-name-btn">Update</button>
                             <button class="btn btn-danger btn-sm" onclick="name_edit1()">Cancel</button>
                         </div>
                         <div class="position-relative text-start" style="font-size: 13px;">
                             <div class="disc m-0 ji-center my-1" id="see_all">
                                 <?php if (Auth::logged_in()) : ?>
-                                    <p class="opacity-75 m-0"><?= Auth::getBio() ?></p>
-                                    <p class="fw-bold opacity-75">add bio <i class="fa-regular fa-pen-to-square col-2 pointer" onclick="name_edit2();"></i></p>
+                                    <p class="opacity-75 m-0" id="user-bio"><?= Auth::getBio() ?></p>
+                                    <p class="fw-bold opacity-75"><?php if(empty(Auth::getBio())): ?>Update bio <?php endif; ?><i class="fa-regular fa-pen-to-square col-2 pointer" onclick="name_edit2();"></i></p>
                                     <div id="bio_edit" class="d-none position-absolute border border-1 rounded-3 bg-white col-12 p-3" style="z-index: 9; left: 0;">
-                                        <textarea class="form-control mb-3" placeholder="Add Bio" name="" id="" cols="30" rows="2" style="outline: none;"></textarea>
-                                        <button class="btn btn-primary btn-sm ">Add</button>
+                                        <textarea class="form-control mb-3" placeholder="Add Bio" name="" id="user-bio-input" cols="30" rows="2" style="outline: none;"><?= Auth::getBio() ?></textarea>
+                                        <button class="btn btn-primary btn-sm" id="update-bio-btn"><?php if(empty(Auth::getBio())): ?>Add<?php else: ?>Update<?php endif; ?></button>
                                         <button class="btn btn-danger btn-sm" onclick="name_edit2()">Cancel</button>
                                     </div>
                                 <?php else : ?>
@@ -69,7 +73,9 @@
                     <div class="border border-1 shadow shadow-sm rounded-3 mb-4">
                         <div class="p-3 position-relative">
 
-                            <div class=""><input type="text" class="form-control mb-2" placeholder="Post title"></div>
+                            <div class="">
+                                <input type="text" id="post-form-title" class="form-control mb-2" placeholder="Post title">
+                            </div>
                             <div id="editor" class="rounded-bottom border border-1"></div>
                             <div class="mt-3 w-100">
                                 <div class="row">
