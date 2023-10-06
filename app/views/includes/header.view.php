@@ -43,9 +43,9 @@
             <div class="offset-lg-1 col-lg-10">
                 <div class="d-flex justify-content-between p-2">
                     <div class="header-left ji-center">
-                        <div class="pe-3 pointer">
+                        <a href="<?= ROOT ?>" class="pe-3 pointer">
                             <img style="width: 40px;" src="<?= APP_LOGO ?>" alt="LOGO" class="">
-                        </div>
+                        </a>
                         <div class="position-relative p-1 d-flex justify-content-center align-items-center border border-1 rounded rounded-2">
                             <i class="fa-solid fa-magnifying-glass mx-2 opacity-75 flex_lg"></i>
                             <i class="fa-solid fa-magnifying-glass mx-2 opacity-75 none_lg" onclick="open_search();"></i>
