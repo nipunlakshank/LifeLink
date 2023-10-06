@@ -287,8 +287,10 @@ i {
   display: flex;
   position: absolute;
   bottom: 50px;
-  left: 30px;
-  width: 90%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 85%;
   height: 50px;
   background: rgba(255, 255, 255, 0.16);
   backdrop-filter: blur(10px);
